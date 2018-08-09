@@ -1,2 +1,2 @@
 # diario_itatiba_robo
-simples robô para procurar chamado para assumir cargo em itatiba
+Robô em shell com objetivo de buscar nomes/padrões no diário oficial da cidade de Itatiba
