@@ -1,8 +1,12 @@
 # diario_itatiba_robo
 Robô em shell com objetivo de buscar nomes/padrões no diário oficial da cidade de Itatiba.  
 
-### pre requisito "pdfgrep"  
-(sistemas ubuntu e derivados): # apt-get install pdfgrep  
+## Requerimentos:  
+
+|Pacote| Descrição|  
+|---------|--------------|  
+|pdfgrep (versão 1.3.0 ou superior)|https://pdfgrep.org/|  
+> Certifique-se que todos os pacotes estão instalados.    
 
 # Descrição  
 O diário oficial de itatiba é publicado todas as terças, quintas e sábados (segundo última atualização desse repositório dia 09 de agosto de 2018) no site: http://www.itatiba.sp.gov.br  
