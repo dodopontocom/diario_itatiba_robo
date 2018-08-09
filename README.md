@@ -15,4 +15,6 @@ url completa:
 http://www.itatiba.sp.gov.br/templates/midia/Imprensa_Oficial/aaaa/mm/dd.mm.aaaa.pdf  
 exemplo: http://www.itatiba.sp.gov.br/templates/midia/Imprensa_Oficial/2018/08/09.08.2018.pdf  
 
-
+# Cron Job  
+cron job do linux para executar o script as 9:00am todos os dias que o diário é publicado no site  
+0 9 * * 2,4,6 /usr/bin/bash ~/diario_itatiba_robo/odificial.sh  
