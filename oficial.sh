@@ -8,18 +8,20 @@
 
 BASEDIR=$(dirname "$0")
 echo "$BASEDIR"
-#exit 0
 
+flagLog=/tmp/findornot.log
 pTest="atos oficiais"
 padrao="carvalho de oliveira neto"
 pattern=$1
 if [[ -z ${pattern} ]]; then
 	pattern=${padrao}
 fi
+
 url_exemplo="http://www.itatiba.sp.gov.br/templates/midia/Imprensa_Oficial/2018/08/09.08.2018.pdf"
 anoMes="$(date +%Y/%m)"
 pdf_name="$(date +%d.%m.%Y).pdf"
 pdf_itatiba="http://www.itatiba.sp.gov.br/templates/midia/Imprensa_Oficial/${anoMes}/${pdf_name}"
+
 echo "buscando informacoes do site:"
 echo "${pdf_itatiba}"
 
@@ -37,8 +39,12 @@ if ls "${BASEDIR}/${pdf_name}"; then
 	pdfgrep -i "${pattern}" ${BASEDIR}/${pdf_name}
 	if [[ "$?" -eq "0" ]]; then
 		echo "padrao encontrado..."
+		echo "oi Thais, seu nome foi encontrado no diario oficial de Itatiba, corra ver no site:" > ${flagLog}
+		echo "${pdf_itatiba}" >> ${flagLog}
 		else
 			echo "padrao nao foi encontrado!!!"
+			echo "oi Thais, por enquanto seu nome nao saiu no diario oficial de Itatiba" > ${flagLog}
+			echo "...pode ficar tranquila que eu te aviso quando vc for chamada ;)" >> ${flagLog}
 	fi
 	else 
 		echo "baixando o pdf de hoje..."
@@ -59,8 +65,12 @@ if ls "${BASEDIR}/${pdf_name}"; then
 		pdfgrep -i "${pattern}" ${BASEDIR}/${pdf_name}
 		if [[ "$?" -eq "0" ]]; then
 			echo "padrao encontrado..."
+			echo "oi Thais, seu nome foi encontrado no diario oficial de Itatiba, corra ver no site:" > ${flagLog}
+			echo "${pdf_itatiba}" >> ${flagLog}
 			else
 				echo "padrao nao foi encontrado!!!"
+				echo "oi Thais, por enquanto seu nome nao saiu no diario oficial de Itatiba" > ${flagLog}
+				echo "...pode ficar tranquila que eu te aviso quando vc for chamada ;)" >> ${flagLog}
 		fi
 fi
 echo "script end"
