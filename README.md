@@ -1,5 +1,6 @@
 # diario_itatiba_robo
-Robô em shell com objetivo de buscar nomes/padrões no diário oficial da cidade de Itatiba
+Robô em shell com objetivo de buscar nomes/padrões no diário oficial da cidade de Itatiba.
+
 O diário oficial de itatiba é publicado todas as terças, quintas e sábados (segundo última atualização desse repositório dia 09 de agosto de 2018)
 no site: http://www.itatiba.sp.gov.br
 
