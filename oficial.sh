@@ -6,6 +6,10 @@
 #script name: oficial.sh
 #version: 0.1
 
+BASEDIR=$(dirname "$0")
+echo "$BASEDIR"
+#exit 0
+
 pTest="atos oficiais"
 padrao="carvalho de oliveira neto"
 pattern=$1
@@ -19,10 +23,10 @@ pdf_itatiba="http://www.itatiba.sp.gov.br/templates/midia/Imprensa_Oficial/${ano
 echo "buscando informacoes do site:"
 echo "${pdf_itatiba}"
 
-if ls "${pdf_name}"; then
+if ls "${BASEDIR}/${pdf_name}"; then
 	echo "pdf de hoje encontrado..."
 	echo "executando primeiro teste..."
-	pdfgrep -i "${pTest}" ${pdf_name}
+	pdfgrep -i "${pTest}" ${BASEDIR}/${pdf_name}
 	if [[ "$?" -eq "0" ]]; then
 		echo "primeiro teste executado com sucesso!!!"
 		else
@@ -30,7 +34,7 @@ if ls "${pdf_name}"; then
 			exit -1	
 	fi
 	echo "procurando padrao: ${pattern}..."
-	pdfgrep -i "${pattern}" ${pdf_name}
+	pdfgrep -i "${pattern}" ${BASEDIR}/${pdf_name}
 	if [[ "$?" -eq "0" ]]; then
 		echo "padrao encontrado..."
 		else
@@ -44,7 +48,7 @@ if ls "${pdf_name}"; then
 			exit -1
 		fi
 		echo "executando primeiro teste..."
-		pdfgrep -i "${pattern}" ${pdf_name}
+		pdfgrep -i "${pattern}" ${BASEDIR}/${pdf_name}
 		if [[ "$?" -eq "0" ]]; then
 			echo "primeiro teste executado com sucesso!!!"
 			else
@@ -52,7 +56,7 @@ if ls "${pdf_name}"; then
 				exit -1
 		fi
 		echo "procurando padrao: ${pattern}..."
-		pdfgrep -i "${pattern}" ${pdf_name}
+		pdfgrep -i "${pattern}" ${BASEDIR}/${pdf_name}
 		if [[ "$?" -eq "0" ]]; then
 			echo "padrao encontrado..."
 			else
@@ -60,5 +64,5 @@ if ls "${pdf_name}"; then
 		fi
 fi
 echo "script end"
-sleep 5
+sleep 1
 exit 0
