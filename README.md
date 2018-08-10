@@ -24,3 +24,5 @@ cron job do linux para executar o script as 9:00am todos os dias que o di√°rio √
 **0 9 * * 2,4,6 /usr/bin/bash ~/diario_itatiba_robo/odificial.sh**  
 
 baixar ubuntu para odroid - https://wiki.odroid.com/odroid-c2/os_images/ubuntu/v3.0
+sudo dd if=<IMG> of=/dev/mmcblk0 bs=512 seek=97  
+sudo sync
