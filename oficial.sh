@@ -54,7 +54,7 @@ if ls "${BASEDIR}/${pdf_name}"; then
 			exit -1
 		fi
 		echo "executando primeiro teste..."
-		pdfgrep -i "${pattern}" ${BASEDIR}/${pdf_name}
+		pdfgrep -i "${pTest}" ${BASEDIR}/${pdf_name}
 		if [[ "$?" -eq "0" ]]; then
 			echo "primeiro teste executado com sucesso!!!"
 			else
