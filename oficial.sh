@@ -39,11 +39,11 @@ if ls "${BASEDIR}/${pdf_name}"; then
 	pdfgrep -i "${pattern}" ${BASEDIR}/${pdf_name}
 	if [[ "$?" -eq "0" ]]; then
 		echo "padrao encontrado..."
-		echo "oi Thais, seu nome foi encontrado no diario oficial de Itatiba, corra ver no site:" > ${flagLog}
+		echo "oi Thaís, 💖 seu nome foi encontrado no diario oficial de Itatiba, corra ver no site:" > ${flagLog}
 		echo "${pdf_itatiba}" >> ${flagLog}
 		else
 			echo "padrao nao foi encontrado!!!"
-			echo "oi Thais, por enquanto seu nome nao saiu no diario oficial de Itatiba" > ${flagLog}
+			echo "oi Thaís, 😔 por enquanto seu nome nao saiu no diário oficial de Itatiba" > ${flagLog}
 			echo "...pode ficar tranquila que eu te aviso quando vc for chamada ;)" >> ${flagLog}
 	fi
 	else 
@@ -65,11 +65,11 @@ if ls "${BASEDIR}/${pdf_name}"; then
 		pdfgrep -i "${pattern}" ${BASEDIR}/${pdf_name}
 		if [[ "$?" -eq "0" ]]; then
 			echo "padrao encontrado..."
-			echo "oi Thais, seu nome foi encontrado no diario oficial de Itatiba, corra ver no site:" > ${flagLog}
+			echo "oi Thaís, 💖 seu nome foi encontrado no diário oficial de Itatiba, corra ver no site:" > ${flagLog}
 			echo "${pdf_itatiba}" >> ${flagLog}
 			else
 				echo "padrao nao foi encontrado!!!"
-				echo "oi Thais, por enquanto seu nome nao saiu no diario oficial de Itatiba" > ${flagLog}
+				echo "oi Thaís, 😔 por enquanto seu nome nao saiu no diário oficial de Itatiba" > ${flagLog}
 				echo "...pode ficar tranquila que eu te aviso quando vc for chamada ;)" >> ${flagLog}
 		fi
 fi
