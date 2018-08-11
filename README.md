@@ -25,4 +25,5 @@ cron job do linux para executar o script as 9:00am todos os dias que o di√°rio √
 
 baixar ubuntu para odroid - https://wiki.odroid.com/odroid-c2/os_images/ubuntu/v3.0
 sudo dd if=ubuntu-18.04-3.10-mate-odroid-c1-20180726.img of=/dev/mmcblk0 bs=1M conv=fsync  
-sudo sync
+sudo sync  
+https://etcher.io/ 
