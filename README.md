@@ -30,3 +30,4 @@ https://etcher.io
 
 locale-gen pt_BR pt_BR.UTF-8 en_US en_US.UTF-8  
 
+.
