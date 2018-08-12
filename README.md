@@ -34,3 +34,7 @@ set date as SAO_PAULO ...
 sudo mv /etc/localtime /etc/localtime_bkp
 sudo ln -s /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime 
 date  
+
+wget https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64
+chmod +x jq-linux64
+sudo mv jq-linux64 $(which jq)
