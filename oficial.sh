@@ -2,13 +2,14 @@
 #script funciona apenas para o padrao do diario 
 #oficial de itatiba, para outras cidades, ajustes devem ser feitos
 
-#author: rodolfotaigo@gmail.com
+#author: rodolfotiago@gmail.com
 #script name: oficial.sh
 #version: 0.1
 
 BASEDIR=$(dirname "$0")
 echo "$BASEDIR"
 
+bkpFolder=~/gitfolder/diarioPDFs
 flagLog=/tmp/findornot.log
 pTest="atos oficiais"
 padrao="carvalho de oliveira neto"
@@ -21,6 +22,12 @@ url_exemplo="http://www.itatiba.sp.gov.br/templates/midia/Imprensa_Oficial/2018/
 anoMes="$(date +%Y/%m)"
 pdf_name="$(date +%d.%m.%Y).pdf"
 pdf_itatiba="http://www.itatiba.sp.gov.br/templates/midia/Imprensa_Oficial/${anoMes}/${pdf_name}"
+
+#criando pasta de bkp para os pdfs
+if [[ ! -f ~/gitfolder/diarioPDFs ]]; then
+	mkdir -p ~/gitfolder/diarioPDFs
+fi
+
 
 echo "buscando informacoes do site:"
 echo "${pdf_itatiba}"
