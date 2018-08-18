@@ -18,6 +18,7 @@ if [[ -z ${pattern} ]]; then
 	pattern=${padrao}
 fi
 
+url="http://www.itatiba.sp.gov.br"
 url_exemplo="http://www.itatiba.sp.gov.br/templates/midia/Imprensa_Oficial/2018/08/09.08.2018.pdf"
 anoMes="$(date +%Y/%m)"
 pdf_name="$(date +%d.%m.%Y).pdf"
@@ -39,7 +40,8 @@ if ls "${BASEDIR}/${pdf_name}"; then
 	if [[ "$?" -eq "0" ]]; then
 		echo "primeiro teste executado com sucesso!!!"
 		else
-			echo "houve algum erro ao baixar o pdf, tente novamente mais tarde..."
+			echo "houve um erro ao baixar o pdf, tente diretamente no site:" > ${flagLog}
+			echo "${url}" >> ${flagLog}
 			exit -1	
 	fi
 	echo "procurando padrao: ${pattern}..."
@@ -65,7 +67,8 @@ if ls "${BASEDIR}/${pdf_name}"; then
 		if [[ "$?" -eq "0" ]]; then
 			echo "primeiro teste executado com sucesso!!!"
 			else
-				echo "houve algum erro ao baixar o pdf, tente novamente mais tarde..."
+				echo "houve algum erro ao baixar o pdf, tente diretamente no site:" > ${flagLog}
+				echo "${url}" >> ${flagLog}
 				exit -1
 		fi
 		echo "procurando padrao: ${pattern}..."
