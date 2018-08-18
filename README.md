@@ -39,5 +39,5 @@ wget https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64
 chmod +x jq-linux64
 sudo mv jq-linux64 $(which jq)
 
-possível erro pode acontecer com pdfgrep, how to fix:
+possível erro pode acontecer com pdfgrep, how to fix:  
 export LC_ALL="en_US.UTF-8"
