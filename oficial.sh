@@ -36,7 +36,7 @@ echo "${pdf_itatiba}"
 if [[ -f "${BASEDIR}/${pdf_name}" ]]; then
 	echo "pdf de hoje encontrado..."
 	echo "executando primeiro teste..."
-	pdfgrep -i "${pTest}" ${BASEDIR}/${pdf_name}
+	chmod 777 ${BASEDIR}/${pdf_name}; /usr/bin/pdfgrep -i "${pTest}" ${BASEDIR}/${pdf_name}
 	if [[ "$?" -eq "0" ]]; then
 		echo "primeiro teste executado com sucesso!!!"
 		else
@@ -45,7 +45,7 @@ if [[ -f "${BASEDIR}/${pdf_name}" ]]; then
 			exit -1	
 	fi
 	echo "procurando padrao: ${pattern}..."
-	pdfgrep -i "${pattern}" ${BASEDIR}/${pdf_name}
+	chmod 777 ${BASEDIR}/${pdf_name}; /usr/bin/pdfgrep -i "${pattern}" ${BASEDIR}/${pdf_name}
 	if [[ "$?" -eq "0" ]]; then
 		echo "padrao encontrado..."
 		echo "oi Thaís, 💖 seu nome foi encontrado no diario oficial de Itatiba, corra ver no site:" > ${flagLog}
@@ -57,22 +57,22 @@ if [[ -f "${BASEDIR}/${pdf_name}" ]]; then
 	fi
 	else 
 		echo "baixando o pdf de hoje..."
-		wget ${pdf_itatiba} 1> /dev/null 2>&1
+		wget ${pdf_itatiba} -P ${BASEDIR}
 		if [[ "$?" -ne "0" ]]; then
 			echo "hoje nao houve registro no diario oficial de itatiba"
 			exit -1
 		fi
 		echo "executando primeiro teste..."
-		pdfgrep -i "${pTest}" ${BASEDIR}/${pdf_name}
+		chmod 777 ${BASEDIR}/${pdf_name}; /usr/bin/pdfgrep -i "${pTest}" ${BASEDIR}/${pdf_name}
 		if [[ "$?" -eq "0" ]]; then
 			echo "primeiro teste executado com sucesso!!!"
 			else
-				echo "houve algum erro ao baixar o pdf, tente diretamente no site:" > ${flagLog}
+				echo "erro ao executar comando pdfgrep, tente diretamente no site:" > ${flagLog}
 				echo "${url}" >> ${flagLog}
 				exit -1
 		fi
 		echo "procurando padrao: ${pattern}..."
-		pdfgrep -i "${pattern}" ${BASEDIR}/${pdf_name}
+		chmod 777 ${BASEDIR}/${pdf_name}; /usr/bin/pdfgrep -i "${pattern}" ${BASEDIR}/${pdf_name}
 		if [[ "$?" -eq "0" ]]; then
 			echo "padrao encontrado..."
 			echo "oi Thaís, 💖 seu nome foi encontrado no diário oficial de Itatiba, corra ver no site:" > ${flagLog}
