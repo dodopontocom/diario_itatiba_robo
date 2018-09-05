@@ -33,7 +33,7 @@ fi
 echo "buscando informacoes do site:"
 echo "${pdf_itatiba}"
 
-if ls "${BASEDIR}/${pdf_name}"; then
+if [[ -f "${BASEDIR}/${pdf_name}" ]]; then
 	echo "pdf de hoje encontrado..."
 	echo "executando primeiro teste..."
 	pdfgrep -i "${pTest}" ${BASEDIR}/${pdf_name}
