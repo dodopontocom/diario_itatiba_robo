@@ -8,7 +8,7 @@ before_script:
 
 script:
  - ./oficial.sh
- - cat ${flagLog}
+ - cat /tmp/findornot.log
 
 branches:
   only:
