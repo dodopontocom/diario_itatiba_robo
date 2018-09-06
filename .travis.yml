@@ -4,10 +4,10 @@ before_install:
  - sudo apt-get update -qq
  - sudo apt-get install -qq pdfgrep
 before_script:
- - chmod +x oficial.sh
+ - chmod +x _scripts/oficial.sh
 
 script:
- - ./oficial.sh
+ - ./_scripts/oficial.sh
 
 after_script:
  - cat /tmp/findornot.log
