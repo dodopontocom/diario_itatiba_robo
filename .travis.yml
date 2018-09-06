@@ -11,8 +11,6 @@ before_script:
 
 script:
  - ./_scripts/oficial.sh
-
-after_script:
  - cat /tmp/findornot.log
 
 branches:
