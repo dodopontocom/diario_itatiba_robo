@@ -8,6 +8,8 @@ before_script:
 
 script:
  - ./oficial.sh
+
+after_script:
  - cat /tmp/findornot.log
 
 branches:
