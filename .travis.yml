@@ -6,7 +6,9 @@ before_install:
 before_script:
  - chmod +x oficial.sh
 
-script: ./oficial.sh
+script:
+ - ./oficial.sh
+ - cat ${flagLog}
 
 branches:
   only:
