@@ -7,3 +7,8 @@ before_script:
  - chmod +x oficial.sh
 
 script: ./oficial.sh
+
+branches:
+  only:
+    - master
+    - develop
