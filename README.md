@@ -1,3 +1,4 @@
+# travis-ci `(branch:develop)` [![Build Status](https://travis-ci.org/dodopontocom/diario_itatiba_robo.svg?branch=develop)](https://travis-ci.org/dodopontocom/diario_itatiba_robo)
 # diario_itatiba_robo
 Robô em shell com objetivo de buscar nomes/padrões no diário oficial da cidade de Itatiba.  
 
@@ -21,7 +22,7 @@ exemplo: http://www.itatiba.sp.gov.br/templates/midia/Imprensa_Oficial/2018/08/0
 
 # Cron Job  
 cron job do linux para executar o script as 9:00am todos os dias que o diário é publicado no site  
-**0 9 * * 2,4,6 /usr/bin/bash ~/diario_itatiba_robo/odificial.sh**  
+**0 9 * * 2,4,6 /usr/bin/bash ~/diario_itatiba_robo/oficial.sh**  
 
 baixar ubuntu para odroid - https://wiki.odroid.com/odroid-c2/os_images/ubuntu/v3.0
 sudo dd if=ubuntu-18.04-3.10-mate-odroid-c1-20180726.img of=/dev/mmcblk0 bs=1M conv=fsync  
