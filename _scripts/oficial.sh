@@ -25,10 +25,9 @@ pdf_name="$(date +%d.%m.%Y).pdf"
 pdf_itatiba="http://www.itatiba.sp.gov.br/templates/midia/Imprensa_Oficial/${anoMes}/${pdf_name}"
 
 #criando pasta de bkp para os pdfs
-if [[ ! -f ~/gitfolder/diarioPDFs ]]; then
-	mkdir -p ~/gitfolder/diarioPDFs
+if [[ ! -f ${bkpFolder} ]]; then
+	mkdir -p ${bkpFolder}
 fi
-
 
 echo "buscando informacoes do site:"
 echo "${pdf_itatiba}"
