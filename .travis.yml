@@ -1,12 +1,17 @@
 language: generic
 
+sudo: false
+ 
 before_install:
  - sudo apt-get update -qq
  - sudo apt-get install -qq pdfgrep
+ - pdfgrep --version
 before_script:
- - chmod +x oficial.sh
+ - chmod +x _scripts/oficial.sh
 
-script: ./oficial.sh
+script:
+ - ./_scripts/oficial.sh
+ - cat /tmp/findornot.log
 
 branches:
   only:
