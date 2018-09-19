@@ -33,9 +33,9 @@ https://etcher.io
 
 locale-gen pt_BR pt_BR.UTF-8 en_US en_US.UTF-8  
 
-set date as SAO_PAULO ...
-sudo mv /etc/localtime /etc/localtime_bkp
-sudo ln -s /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime 
+set date as SAO_PAULO ...  
+sudo mv /etc/localtime /etc/localtime_bkp  
+sudo ln -s /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime   
 date  
 
 wget https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64
