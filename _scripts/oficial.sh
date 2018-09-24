@@ -61,6 +61,8 @@ if [[ -f "${BASEDIR}/${pdf_name}" ]]; then
 			echo "hoje nao houve registro no diario oficial de itatiba"
 			exit -1
 		fi
+		echo "copiando pdf para a tmp"
+		cp ${BASEDIR}/${pdf_name} /tmp/
 		echo "executando primeiro teste..."
 		chmod 777 ${BASEDIR}/${pdf_name}; /usr/bin/pdfgrep -i "${pTest}" ${BASEDIR}/${pdf_name}
 		if [[ "$?" -eq "0" ]]; then
