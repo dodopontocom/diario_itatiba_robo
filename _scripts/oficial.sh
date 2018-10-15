@@ -58,8 +58,8 @@ if [[ -f "${BASEDIR}/${pdf_name}" ]]; then
 		echo "baixando o pdf de hoje..."
 		wget ${pdf_itatiba} -P ${BASEDIR}
 		if [[ "$?" -ne "0" ]]; then
-			echo "hoje nao houve registro no diario oficial de itatiba"
-			exit -1
+			echo "hoje nao houve registro no diario oficial de itatiba" > ${flagLog}
+			#exit -1
 		fi
 		echo "copiando pdf para a tmp"
 		cp ${BASEDIR}/${pdf_name} /tmp/
