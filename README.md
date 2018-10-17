@@ -26,21 +26,21 @@ cron job do linux para executar o script as 9:00am todos os dias que o diário �
 
 # Anotações do autor  
 
-baixar ubuntu para odroid - https://wiki.odroid.com/odroid-c2/os_images/ubuntu/v3.0
-sudo dd if=ubuntu-18.04-3.10-mate-odroid-c1-20180726.img of=/dev/mmcblk0 bs=1M conv=fsync  
+baixar ubuntu para odroid-c2 - https://wiki.odroid.com/odroid-c2/os_images/ubuntu/v3.0  
+sudo dd if=ubuntu-18.04-3.10-mate-odroid-c1-20180726.img of=/dev/mmcblk0 bs=1M conv=fsync    
 sudo sync  
 https://etcher.io  
 
 locale-gen pt_BR pt_BR.UTF-8 en_US en_US.UTF-8  
 
-set date as SAO_PAULO ...
-sudo mv /etc/localtime /etc/localtime_bkp
+set date as SAO_PAULO ...  
+sudo mv /etc/localtime /etc/localtime_bkp  
 sudo ln -s /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime 
 date  
 
-wget https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64
-chmod +x jq-linux64
+wget https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64  
+chmod +x jq-linux64  
 sudo mv jq-linux64 $(which jq)
 
-possível erro pode acontecer com pdfgrep, how to fix:  
+possível erro pode acontecer com pdfgrep, how to fix:    
 export LC_ALL="en_US.UTF-8"
