@@ -5,6 +5,7 @@ services:
  - docker
  
 script:
+ - bash GH_TOKEN=my_github_token | travis encrypt --add
  - bash _scripts/build.sh
  
 deploy:
