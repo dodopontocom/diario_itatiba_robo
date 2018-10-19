@@ -13,7 +13,7 @@ _scripts/build.sh
 echo "${STD_MSG}"
 setup_git rodolfotiago@gmail.com dodopontocom
 
-git checkout -b docker-v1.0
+git checkout docker-v1.0
 git add -A
 git commit -m "version ${version}"
 git tag "${version}" -m "version ${version}"
