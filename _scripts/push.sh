@@ -1,8 +1,8 @@
 #!/bin/sh
 
 setup_git() {
-  git config --global user.email "travis@travis-ci.org"
-  git config --global user.name "Travis CI"
+  git config --global user.email "$1"
+  git config --global user.name "$2"
 }
 
 commit_website_files() {
@@ -12,10 +12,6 @@ commit_website_files() {
 }
 
 upload_files() {
-  git remote add origin-pages https://${GH_TOKEN}@github.com/MVSE-outreach/resources.git > /dev/null 2>&1
-  git push --quiet --set-upstream origin-pages gh-pages 
+  git remote add origin-pages https://${GH_TOKEN}@github.com/dodopontocom/diario_itatiba_robo.git > /dev/null 2>&1
+  git push --quiet --set-upstream origin-pages docker-v1.0
 }
-
-setup_git
-commit_website_files
-upload_files
