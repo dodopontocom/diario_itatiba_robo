@@ -1,5 +1,7 @@
 FROM alpine:latest
 
+ADD VERSION .
+
 RUN apk add --update \
 	pdfgrep
 	
