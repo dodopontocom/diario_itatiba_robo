@@ -5,7 +5,6 @@ services:
  - docker
  
 script:
- - bash GH_TOKEN=my_github_token | travis encrypt --add
  - bash _scripts/build.sh
  
 deploy:
@@ -14,9 +13,6 @@ deploy:
  on:
   branch: docker-v1.0
 
-env:
- global:
-  secure: 86e3b5307891fbceb5784c119c7fc113b81c1ccb
 branches:
   only:
     - docker-v1.0
