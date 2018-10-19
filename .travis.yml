@@ -5,9 +5,9 @@ services:
  - docker
  
 before_install:
- - docker pull rodolfoneto/bit-pipeline:1.0.0
+ - docker build rodolfoneto/bit-pipeline:1.0.1 . 
 script:
- - docker run --rm rodolfoneto/bit-pipeline:1.0.0
+ - docker run --rm rodolfoneto/bit-pipeline:1.0.1
 
 branches:
   only:
