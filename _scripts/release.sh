@@ -2,9 +2,9 @@
 
 IMAGE=bot-itatiba
 
-docker run --rm "${DOCKER_USERNAME}"/bump patch
+docker run --rm "${DOCKER_USERNAME}/bump" patch
 version=$(cat VERSION)
-echo "version: ${version}
+echo "version: ${version}"
 
 ./build.sh
 
