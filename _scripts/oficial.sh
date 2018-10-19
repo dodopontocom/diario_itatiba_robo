@@ -8,6 +8,7 @@
 
 BASEDIR=$(dirname "$0")
 echo "$BASEDIR"
+echo "${TRAVIS_EVENT_TYPE} <--"
 
 pTest="atos oficiais"
 padrao="carvalho de oliveira neto"
