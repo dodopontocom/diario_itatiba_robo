@@ -4,18 +4,15 @@ sudo: required
 services:
  - docker
  
-before_install:
- - docker build -t rodolfoneto/bit-pipeline:1.0.1 . 
 script:
- - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
- - docker run --rm rodolfoneto/bit-pipeline:1.0.1
-
+ - bash _scripts/build.sh
+ 
 deploy:
  provider: script
- script: bash _scripts/docker_push.sh
+ script: bash _scripts/release.sh
  on:
-  branch: docker
+  branch: docker-v1.0
  
 branches:
   only:
-    - docker
+    - docker-v1.0
