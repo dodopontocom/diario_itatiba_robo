@@ -11,7 +11,7 @@ _scripts/build.sh
 . _scripts/push.sh
 
 echo "${STD_MSG}"
-setup_git "travis@travis-ci.org" "Travis CI"
+setup_git "rodolfotiago@gmail.com" "dodopontocom"
 
 git checkout docker-v1.0
 git add -A
