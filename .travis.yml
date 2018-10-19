@@ -6,12 +6,6 @@ services:
  
 script:
  - bash _scripts/build.sh
- 
-deploy:
- provider: script
- script: bash _scripts/release.sh
- on:
-  branch: docker-v1.0
 
 branches:
   only:
