@@ -10,6 +10,10 @@ script:
  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
  - docker run --rm rodolfoneto/bit-pipeline:1.0.1
 
+deploy:
+ provider: script
+ script: bash _scripts/docker_push.sh
+ 
 branches:
   only:
     - docker
