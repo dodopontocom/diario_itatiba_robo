@@ -13,6 +13,8 @@ script:
 deploy:
  provider: script
  script: bash _scripts/docker_push.sh
+ on:
+  branch: docker
  
 branches:
   only:
