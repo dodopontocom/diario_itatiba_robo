@@ -6,6 +6,7 @@ docker run --rm "${DOCKER_USERNAME}/bump" patch
 version=$(cat VERSION)
 echo "version: ${version}"
 
+chmod +x _scripts/build.sh
 _scripts/build.sh
 
 git add -A
