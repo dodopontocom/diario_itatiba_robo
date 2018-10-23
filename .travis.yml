@@ -6,7 +6,8 @@ services:
  - docker
  
 script:
- - docker run --rm rodolfoneto/diario_itatiba_robo:develop
+ - docker build -t itatiba_bot/ita:latest .
+ - docker run --rm itatiba_bot/ita:latest
 
 branches:
   only:
