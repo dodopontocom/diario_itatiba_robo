@@ -5,6 +5,9 @@ sudo: required
 services:
  - docker
  
+before_script:
+ - echo ${TB_TOKEN}
+ 
 script:
  - docker build -t itatiba_bot/ita:latest .
  - docker run --rm itatiba_bot/ita:latest
