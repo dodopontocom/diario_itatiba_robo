@@ -1,4 +1,8 @@
 [![Build Status](https://travis-ci.org/dodopontocom/diario_itatiba_robo.svg?branch=develop)](https://travis-ci.org/dodopontocom/diario_itatiba_robo)
+[![Docker Automated build](https://img.shields.io/docker/automated/rodolfoneto/diario_itatiba_robo.svg)](https://hub.docker.com/r/rodolfoneto/diario_itatiba_robo/)
+[![Docker Build Status](https://img.shields.io/docker/build/rodolfoneto/diario_itatiba_robo.svg)](https://hub.docker.com/r/rodolfoneto/diario_itatiba_robo/)
+[![Docker Pulls](https://img.shields.io/docker/pulls/rodolfoneto/diario_itatiba_robo.svg)](https://hub.docker.com/r/rodolfoneto/diario_itatiba_robo/)
+
 # diario_itatiba_robo
 Repositório para o script que busca nomes/padrões no diário oficial(pdf) da cidade de Itatiba.  
 
