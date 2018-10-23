@@ -4,6 +4,9 @@ sudo: required
 
 services:
  - docker
+
+env:
+ - TB_TOKEN=${TB_TOKEN}
  
 before_script:
  - echo ${TB_TOKEN}
