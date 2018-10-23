@@ -11,7 +11,7 @@ echo "$BASEDIR"
 
 pTest="atos oficiais"
 padrao="carvalho de oliveira neto"
-pattern=$1
+pattern=${BUSCA}
 if [[ -z ${pattern} ]]; then
 	pattern=${padrao}
 fi
