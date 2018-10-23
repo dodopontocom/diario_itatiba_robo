@@ -8,34 +8,32 @@
 
 BASEDIR=$(dirname "$0")
 echo "$BASEDIR"
-echo "${TRAVIS_EVENT_TYPE} <--"
 
 pTest="atos oficiais"
 padrao="carvalho de oliveira neto"
-pattern=$1
+pattern=${BUSCA}
 if [[ -z ${pattern} ]]; then
 	pattern=${padrao}
 fi
 
 url="http://www.itatiba.sp.gov.br"
-url_exemplo="http://www.itatiba.sp.gov.br/templates/midia/Imprensa_Oficial/2018/08/09.08.2018.pdf"
 anoMes="$(date +%Y/%m)"
 pdf_name="$(date +%d.%m.%Y).pdf"
 pdf_itatiba="http://www.itatiba.sp.gov.br/templates/midia/Imprensa_Oficial/${anoMes}/${pdf_name}"
+
 token=${TB_TOKEN}
-echo "[DEBUG] ${token}"
+ids=("$(echo IDS)")
 
 sendMessageBot() {
-	#ids=(11504381 449542698)
 	messageText=$1
-	for i in 11504381 449542698; do
+	for i in "${ids[@]}"; do
 		curl -s -X POST https://api.telegram.org/bot${token}/sendMessage -d chat_id=${i} -d text="${messageText}"
 	done
 }
 #
 sendDocumentBot(){
 	documentPath=$1
-	for d in 11504381 449542698; do
+	for d in "${ids[@]}"; do
 		curl -F chat_id=${d} -F document=@${documentPath} https://api.telegram.org/bot${token}/sendDocument
 	done
 }
