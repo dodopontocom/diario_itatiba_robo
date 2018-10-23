@@ -12,3 +12,4 @@ branches:
   only:
     - develop
     - master
+    - docker-v2.0
