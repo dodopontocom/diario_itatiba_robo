@@ -12,7 +12,7 @@ echo "${TRAVIS_EVENT_TYPE} <--"
 
 pTest="atos oficiais"
 padrao="carvalho de oliveira neto"
-pattern=$2
+pattern=$1
 if [[ -z ${pattern} ]]; then
 	pattern=${padrao}
 fi
@@ -22,7 +22,7 @@ url_exemplo="http://www.itatiba.sp.gov.br/templates/midia/Imprensa_Oficial/2018/
 anoMes="$(date +%Y/%m)"
 pdf_name="$(date +%d.%m.%Y).pdf"
 pdf_itatiba="http://www.itatiba.sp.gov.br/templates/midia/Imprensa_Oficial/${anoMes}/${pdf_name}"
-token=$1
+token=${TB_TOKEN}
 echo "[DEBUG] ${token}"
 
 sendMessageBot() {
