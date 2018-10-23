@@ -23,7 +23,7 @@ anoMes="$(date +%Y/%m)"
 pdf_name="$(date +%d.%m.%Y).pdf"
 pdf_itatiba="http://www.itatiba.sp.gov.br/templates/midia/Imprensa_Oficial/${anoMes}/${pdf_name}"
 token=${TB_TOKEN}
-
+echo "[DEBUG] ${token}"
 sendMessageBot() {
 	#ids=(11504381 449542698)
 	messageText=$1
