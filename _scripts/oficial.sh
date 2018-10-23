@@ -22,10 +22,10 @@ url_exemplo="http://www.itatiba.sp.gov.br/templates/midia/Imprensa_Oficial/2018/
 anoMes="$(date +%Y/%m)"
 pdf_name="$(date +%d.%m.%Y).pdf"
 pdf_itatiba="http://www.itatiba.sp.gov.br/templates/midia/Imprensa_Oficial/${anoMes}/${pdf_name}"
-
+token=${TB_TOKEN}
+echo "[DEBUG] token: ${token}"
 #
 sendMessageBot() {
-	token=${TB_TOKEN}
 	#ids=(11504381 449542698)
 	messageText=$1
 	for i in 11504381 449542698; do
