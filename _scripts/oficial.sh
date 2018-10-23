@@ -22,7 +22,7 @@ pdf_name="$(date +%d.%m.%Y).pdf"
 pdf_itatiba="http://www.itatiba.sp.gov.br/templates/midia/Imprensa_Oficial/${anoMes}/${pdf_name}"
 
 token=${TB_TOKEN}
-ids=("$(echo $IDS)")
+ids={"$(echo $IDS)"}
 
 sendMessageBot() {
 	messageText=$1
