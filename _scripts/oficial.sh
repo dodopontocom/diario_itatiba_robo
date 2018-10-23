@@ -11,7 +11,7 @@ echo "$BASEDIR"
 
 pTest="atos oficiais"
 padrao="carvalho de oliveira neto"
-pattern=${BUSCA}
+pattern=$1
 if [[ -z ${pattern} ]]; then
 	pattern=${padrao}
 fi
@@ -22,18 +22,17 @@ pdf_name="$(date +%d.%m.%Y).pdf"
 pdf_itatiba="http://www.itatiba.sp.gov.br/templates/midia/Imprensa_Oficial/${anoMes}/${pdf_name}"
 
 token=${TB_TOKEN}
-ids={"$(echo $IDS)"}
 
 sendMessageBot() {
 	messageText=$1
-	for i in "${ids[@]}"; do
+	for i in 11504381 449542698; do
 		curl -s -X POST https://api.telegram.org/bot${token}/sendMessage -d chat_id=${i} -d text="${messageText}"
 	done
 }
 #
 sendDocumentBot(){
 	documentPath=$1
-	for d in "${ids[@]}"; do
+	for d in 11504381 449542698; do
 		curl -F chat_id=${d} -F document=@${documentPath} https://api.telegram.org/bot${token}/sendDocument
 	done
 }
