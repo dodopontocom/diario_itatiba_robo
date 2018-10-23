@@ -25,7 +25,7 @@ pdf_itatiba="http://www.itatiba.sp.gov.br/templates/midia/Imprensa_Oficial/${ano
 
 #
 sendMessageBot() {
-	token="407633103:AAEtBhtw9En-Z_fcFil7bLbQHCXwxDwJAvA"
+	token=${TB_TOKEN}
 	#ids=(11504381 449542698)
 	messageText=$1
 	for i in 11504381 449542698; do
