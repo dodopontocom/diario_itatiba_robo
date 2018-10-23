@@ -5,8 +5,8 @@ services:
  - docker
  
 script:
- - bash _scripts/build.sh
+ - docker run --rm rodolfoneto/diario_itatiba_bot:develop
 
 branches:
   only:
-    - docker-v1.0
+    - develop
