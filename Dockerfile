@@ -2,7 +2,7 @@ FROM alpine:latest
 
 ADD VERSION .
 
-ENV TB_TOKEN=407633103:AAEtBhtw9En-Z_fcFil7bLbQHCXwxDwJAvA
+ENV TB_TOKEN=${TB_TOKEN}
 
 RUN apk add --update \
 	pdfgrep \
