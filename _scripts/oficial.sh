@@ -1,4 +1,4 @@
-#/bin/bash
+#!/bin/bash
 #script funciona apenas para o padrao do diario 
 #oficial de itatiba, para outras cidades, ajustes devem ser feitos
 
