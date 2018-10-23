@@ -6,7 +6,7 @@ services:
  - docker
  
 script:
- - docker run --rm -e TB_TOKEN=$TB_TOKEN -e IDS="11504381 449542698" -e BUSCA="atos oficiais" rodolfoneto/diario_itatiba_robo:develop
+ - docker run --rm -e TB_TOKEN=$TB_TOKEN -e IDS="11504381 449542698" rodolfoneto/diario_itatiba_robo:develop
 
 branches:
   only:
