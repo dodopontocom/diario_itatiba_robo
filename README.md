@@ -1,4 +1,4 @@
-`(travis-ci)` [![Build Status](https://travis-ci.org/dodopontocom/diario_itatiba_robo.svg?branch=develop)](https://travis-ci.org/dodopontocom/diario_itatiba_robo)
+[![Build Status](https://travis-ci.org/dodopontocom/diario_itatiba_robo.svg?branch=develop)](https://travis-ci.org/dodopontocom/diario_itatiba_robo)
 # diario_itatiba_robo
 Repositório para o script que busca nomes/padrões no diário oficial(pdf) da cidade de Itatiba.  
 
