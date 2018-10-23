@@ -5,7 +5,8 @@ services:
  - docker
  
 script:
- - docker run --rm rodolfoneto/diario_itatiba_bot:develop
+ - bash 'echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin'
+ - docker run --rm rodolfoneto/diario_itatiba_robo:develop
 
 branches:
   only:
