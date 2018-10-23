@@ -6,7 +6,7 @@ services:
  - docker
  
 script:
- - docker run --rm rodolfoneto/diario_itatiba_robo:develop
+ - docker run --rm -e TB_TOKEN=$TB_TOKEN rodolfoneto/diario_itatiba_robo:develop
 
 branches:
   only:
