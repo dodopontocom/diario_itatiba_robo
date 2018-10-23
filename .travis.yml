@@ -4,16 +4,9 @@ sudo: required
 
 services:
  - docker
-
-env:
- - TB_TOKEN=${TB_TOKEN}
- 
-before_script:
- - echo ${TB_TOKEN}
  
 script:
- - docker build -t itatiba_bot/ita:latest .
- - docker run --rm itatiba_bot/ita:latest
+ - docker run --rm rodolfoneto/diario_itatiba_robo:develop
 
 branches:
   only:
