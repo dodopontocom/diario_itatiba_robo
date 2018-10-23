@@ -56,6 +56,8 @@ if [[ "${ec}" -ne "0" ]]; then
 		/usr/bin/pdfgrep -i "${pattern}" /tmp/${pdf_name}
 		if [[ "$?" -eq "0" ]]; then
 			sendMessageBot "Thaís, corra ver no site, seu nome saiu!!!"
+			sendMessageBot "estou enviando o PDF para você poder confirmar..."
+			sendDocumentBot "/tmp/${pdf_name}"
 			else
 				sendMessageBot "Thaís, você ainda não foi chamada em Itatiba"
 				sendMessageBot "estou enviando o PDF para você poder confirmar..."
