@@ -1,5 +1,5 @@
 #/bin/bash
-
+#
 BASEDIR=$(dirname "$0")
 #chamar o bot
 source ./ShellBot.sh
