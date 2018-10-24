@@ -4,13 +4,20 @@
 [![Docker Pulls](https://img.shields.io/docker/pulls/rodolfoneto/diario_itatiba_robo.svg)](https://hub.docker.com/r/rodolfoneto/diario_itatiba_robo/)
 
 # diario_itatiba_robo
-Repositório para o script que busca nomes/padrões no diário oficial(pdf) da cidade de Itatiba.  
+Ferramenta para buscar nomes/padrões na Imprensa Oficial de Prefeituras do Brasil.  
+
+### Ferramenta atualmente disponível para as cidades:
+
+- [x] Itatiba
+- [ ] Outras...
 
 ## Requerimentos  
 
 |Pacote| Descrição|  
 |---------|--------------|  
-|pdfgrep (versão 1.3.0 ou superior)|https://pdfgrep.org/|  
+|docker |https://docker.io/|
+|telegram|https://telegram.org|
+
 > Certifique-se que todos os pacotes estão instalados.    
 
 # Descrição  
