@@ -24,6 +24,7 @@ Ferramenta para buscar nomes/padrões na Imprensa Oficial de Prefeituras do Bras
 * Ou precisa pesquisar outros padrões (frases) no diário oficial da sua cidade
 
 # Como usar  
-Para saber por exemplo se o seu nome foi chamado, envie o nome desejado para o bot abaixo. Ele irá processar e pesquisar no Diário Oficial das últimas 3 semanas. O bot vai retornar se houve ocorrência do nome solicitado, caso positivo, irá mandar o arquivo PDF em questão
+- Instalar e se registrar no telegram pelo aplicativo de celular. Posteriormente pode usar a versão [web](web.telegram.org)  
+- Para saber por exemplo se o seu nome foi chamado, envie o nome desejado para o bot abaixo. Ele irá processar e pesquisar no Diário Oficial das últimas 3 semanas. O bot vai retornar se houve ocorrência do nome solicitado, caso positivo, irá mandar o arquivo PDF em questão
 
 > bot [@odroidbrBot](https://web.telegram.org/#/im?p=%40odroidbrBot)
