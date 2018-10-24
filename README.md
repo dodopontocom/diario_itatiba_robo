@@ -6,7 +6,7 @@
 # diario_itatiba_robo
 Ferramenta para buscar nomes/padrões na Imprensa Oficial de Prefeituras do Brasil.  
 
-### Ferramenta atualmente disponível para as cidades:
+### Atualmente disponível para as cidades:
 
 - [x] Itatiba
 - [ ] Outras...
@@ -15,13 +15,13 @@ Ferramenta para buscar nomes/padrões na Imprensa Oficial de Prefeituras do Bras
 
 |Pacote| Descrição|  
 |---------|--------------|  
-|docker |https://docker.io/|
-|telegram|https://telegram.org|
+|telegram|https://telegram.org|  
 
-> Certifique-se que todos os pacotes estão instalados.    
+> Registre-se no Telegram.    
 
 # Descrição  
-O diário oficial de itatiba é publicado todas as terças, quintas e sábados (segundo última atualização desse repositório dia 09 de Setembro de 2018) no site: http://www.itatiba.sp.gov.br  
+. Para você que passou em concurso e aguarda o seu nome ser chamado
+. Ou precisa pesquisar outros padrões (frases) no diário oficial da sua cidade
 
 É publicado em versão de PDF(https://pt.wikipedia.org/wiki/Portable_Document_Format)  
 
