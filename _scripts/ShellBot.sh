@@ -4985,4 +4985,3 @@ readonly -f MessageError 		\
 			FlagConv
 
 # /* SHELLBOT */
-Height: 1080
