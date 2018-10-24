@@ -1,7 +1,8 @@
 #/bin/bash
 
+BASEDIR=$(dirname "$0")
 #chamar o bot
-source ${BASEDIR}/../ShellBot.sh
+source ./ShellBot.sh
 
 ShellBot.init --token $(cat ${BASEDIR}/token.txt) --monitor --return value
 
