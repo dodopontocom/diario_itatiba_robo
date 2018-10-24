@@ -13,7 +13,7 @@ do
     do
     # bloco de instruções
     (
-	ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "${message_chat_id[$id]}"
+	ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "test"
     ) &  # Criando thread
     done
 done
