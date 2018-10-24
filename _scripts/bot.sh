@@ -8,12 +8,15 @@ ShellBot.init --token $(cat ${BASEDIR}/token.txt) --monitor --return value
 
 while :
 do
+    # Obtem as atualizações
+    ShellBot.getUpdates --limit 100 --offset $(ShellBot.OffsetNext) --timeout 30
+    
     # Lista as atualizações.
     for id in $(ShellBot.ListUpdates)
     do
     # bloco de instruções
     (
-	ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "test"
+	ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "${chat_id}"
     ) &  # Criando thread
     done
 done
