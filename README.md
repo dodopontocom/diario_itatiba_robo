@@ -20,8 +20,8 @@ Ferramenta para buscar nomes/padrões na Imprensa Oficial de Prefeituras do Bras
 > Registre-se no Telegram.    
 
 # Descrição  
-. Para você que passou em concurso e aguarda o seu nome ser chamado
-. Ou precisa pesquisar outros padrões (frases) no diário oficial da sua cidade
+* Para você que passou em concurso e aguarda o seu nome ser chamado  
+* Ou precisa pesquisar outros padrões (frases) no diário oficial da sua cidade
 
 É publicado em versão de PDF(https://pt.wikipedia.org/wiki/Portable_Document_Format)  
 
