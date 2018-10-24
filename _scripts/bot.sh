@@ -34,8 +34,8 @@ do
 	-H "Travis-API-Version: 3" \
 	-H "Accept: application/json" \
 	-H "Authorization: token ${token}" \
-	-d "${body}" \
-	${apiUrl}
+	-d '{"request": {"branch": "develop"}}' \
+	https://api.travis-ci.org/repo/dodopontocom%2Fdiario_itatiba_robo/requests
 	
     ) &  # Criando thread
     done
