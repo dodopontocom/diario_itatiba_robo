@@ -25,7 +25,7 @@ token=${TB_TOKEN}
 
 sendMessageBot() {
 	messageText=$1
-	for i in 11504381 449542698; do
+	for i in 11504381 -16851572; do
 		curl -s -X POST https://api.telegram.org/bot${token}/sendMessage -d chat_id=${i} -d text="${messageText}"
 	done
 }
