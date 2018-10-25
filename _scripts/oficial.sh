@@ -32,7 +32,7 @@ sendMessageBot() {
 #
 sendDocumentBot(){
 	documentPath=$1
-	for d in 11504381 449542698; do
+	for d in 11504381 -16851572; do
 		curl -F chat_id=${d} -F document=@${documentPath} https://api.telegram.org/bot${token}/sendDocument
 	done
 }
