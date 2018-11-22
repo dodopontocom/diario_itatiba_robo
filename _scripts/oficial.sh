@@ -51,7 +51,7 @@ if [[ "${ec}" -ne "0" ]]; then
 	sendMessageBot "hoje não houve registro no diário oficial de Itatiba"
 	else
 		chmod 777 /tmp/${pdf_name}; /usr/bin/pdfgrep -i "${pTest}" /tmp/${pdf_name}
-		/usr/bin/pdfgrep -i "${pattern}" /tmp/${pdf_name}
+		chmod 777 /tmp/${pdf_name}; /usr/bin/pdfgrep -i "${pattern}" /tmp/${pdf_name}
 		if [[ "$?" -eq "0" ]]; then
 			sendMessageBot "Thaís, corra ver no site, seu nome saiu!!!"
 			sendMessageBot "estou enviando o PDF para você poder confirmar..."
