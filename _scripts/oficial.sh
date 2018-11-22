@@ -10,8 +10,7 @@ BASEDIR=$(dirname "$0")
 echo "$BASEDIR"
 
 pTest="atos oficiais"
-padrao="natalina maria de"
-#padrao="carvalho de oliveira neto"
+padrao="carvalho de oliveira neto"
 pattern=$1
 if [[ -z ${pattern} ]]; then
 	pattern=${padrao}
