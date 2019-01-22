@@ -39,7 +39,7 @@ sendDocumentBot(){
 #baixar pdf
 ec=0
 echo "baixando PDF do site oficial..."
-wget ${pdf_itatiba} -P /tmp/
+wget -O /tmp/Itatiba_${pdf_name} ${pdf_itatiba}
 ec=$(echo $?)
 if [[ "${ec}" -ne "0" ]]; then
 	echo "======================================================="
@@ -47,21 +47,21 @@ if [[ "${ec}" -ne "0" ]]; then
 	echo "saída: err --- ${ec}"
 	echo "enviando mensagem pelo bot..."
 	echo "======================================================="
-	sendMessageBot "hoje não houve registro no diário oficial de Itatiba"
+	sendMessageBot "AVISO ITATIBA - hoje não houve registro no diário oficial"
 	else
-		chmod 777 /tmp/${pdf_name}; /usr/bin/pdfgrep -i "${pTest}" /tmp/${pdf_name}
+		chmod 777 /tmp/Itatiba_${pdf_name}; /usr/bin/pdfgrep -i "${pTest}" /tmp/Itatiba_${pdf_name}
 		echo "se igual a zero entao achou  (((( $? ))) "
-		chmod 777 /tmp/${pdf_name}; /usr/bin/pdfgrep -i "${pattern}" /tmp/${pdf_name}
+		chmod 777 /tmp/Itatiba_${pdf_name}; /usr/bin/pdfgrep -i "${pattern}" /tmp/Itatiba_${pdf_name}
 		exc=$(echo $?)
 		echo "se igual a zero entao achou  (((( ${exc} ))) "
 		if [[ "${exc}" -eq "0" ]]; then
-			sendMessageBot "Thaís, corra ver no site, seu nome saiu!!!"
+			sendMessageBot "AVISO ITATIBA - Corra ver no site, seu nome saiu!!!"
 			sendMessageBot "estou enviando o PDF para você poder confirmar..."
-			sendDocumentBot "/tmp/${pdf_name}"
+			sendDocumentBot "/tmp/Itatiba_${pdf_name}"
 			else
-				sendMessageBot "Thaís, você ainda não foi chamada em Itatiba"
+				sendMessageBot "AVISO ITATIBA - Thaís, você ainda não foi chamada"
 				sendMessageBot "estou enviando o PDF para você poder confirmar..."
-				sendDocumentBot "/tmp/${pdf_name}"
+				sendDocumentBot "/tmp/Itatiba_${pdf_name}"
 		fi
 fi
 echo "script end"
