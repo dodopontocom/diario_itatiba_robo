@@ -10,6 +10,8 @@ Ferramenta para buscar nomes/padrões na Imprensa Oficial de Prefeituras do Bras
 ### Atualmente disponível para as cidades:
 
 - [x] Itatiba
+- [x] Jundiai
+- [x] Barueri
 - [ ] Outras...
 
 ## Requerimentos  
