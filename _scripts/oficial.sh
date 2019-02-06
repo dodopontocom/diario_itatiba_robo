@@ -55,11 +55,11 @@ if [[ "${ec}" -ne "0" ]]; then
 		exc=$(echo $?)
 		echo "se igual a zero entao achou  (((( ${exc} ))) "
 		if [[ "${exc}" -eq "0" ]]; then
-			sendMessageBot "AVISO ITATIBA - Corra ver no site, seu nome saiu!!!"
+			sendMessageBot "AVISO ITATIBA - Corra ver no site, seu nome foi citado no edital de hoje!!!"
 			sendMessageBot "estou enviando o PDF para você poder confirmar..."
 			sendDocumentBot "/tmp/Itatiba_${pdf_name}"
 			else
-				sendMessageBot "AVISO ITATIBA - Thaís, você ainda não foi chamada"
+				sendMessageBot "AVISO ITATIBA - Seu nome não foi citado no edital de hoje"
 				sendMessageBot "estou enviando o PDF para você poder confirmar..."
 				sendDocumentBot "/tmp/Itatiba_${pdf_name}"
 		fi
