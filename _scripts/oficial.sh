@@ -44,26 +44,27 @@ sendDocumentBot(){
 }
 
 itatiba() {
-        pasta_pdf=${pasta_destino}/itatiba
+	cidade=$2
+        pasta_pdf=${pasta_destino}/${cidade}
         if [[ ! -d "${pasta_pdf}" ]]; then
                 mkdir ${pasta_pdf}
         fi
-	pdf_save=${pasta_pdf}/Itatiba_$(date +%Y%m%d).pdf
+	pdf_save=${pasta_pdf}/${cidade}_$(date +%Y%m%d).pdf
         echo "procurando pelo edital de Itatiba --- url: $1"
         wget -q --spider $1
         if [[ "$?" -ne "0" ]]; then
-                sendMessageBot "AVISO ITATIBA - hoje não houve registro no diário oficial"
+                sendMessageBot "AVISO ${cidade} - hoje não houve registro no diário oficial"
         else
-                wget -O ${pdf_save} $i
+                wget -O ${pdf_save} $1
                 chmod 777 ${pdf_save}; /usr/bin/pdfgrep -i "${pattern}" ${pdf_save}
 		exc=$(echo $?)
 		echo "se igual a zero entao achou  (((( ${exc} ))) "
 		if [[ "${exc}" -eq "0" ]]; then
-			sendMessageBot "AVISO ITATIBA - Corra ver no site, seu nome foi citado no edital de hoje!!!"
+			sendMessageBot "AVISO ${cidade} - Corra ver no site, seu nome foi citado no edital de hoje!!!"
 			sendMessageBot "estou enviando o PDF para você poder confirmar..."
 			sendDocumentBot "${pdf_save}"
 			else
-				sendMessageBot "AVISO ITATIBA - Seu nome não foi citado no edital de hoje"
+				sendMessageBot "AVISO ${cidade} - Seu nome não foi citado no edital de hoje"
 				sendMessageBot "estou enviando o PDF para você poder confirmar..."
 				sendDocumentBot "${pdf_save}"
 		fi
@@ -72,16 +73,17 @@ itatiba() {
         rm -vfr ${pasta_pdf}
 }
 boituva() {
-        pasta_pdf=${pasta_destino}/boituva
+	cidade=$2
+        pasta_pdf=${pasta_destino}/${cidade}
         if [[ ! -d "${pasta_pdf}" ]]; then
                 mkdir ${pasta_pdf}
         fi
 	url=$1
-	pdf_save=${pasta_pdf}/Boituva_$(date +%Y%m%d).pdf
+	pdf_save=${pasta_pdf}/${cidade}_$(date +%Y%m%d).pdf
         anoMesDia="$(date +%Y-%m-%d)"
         pdfs=($(curl -s ${url} | grep -E -o "${anoMesDia}.*\.pdf" | cut -d'>' -f2))
         if [[ -z ${pdfs[@]} ]]; then
-                sendMessageBot "AVISO BOITUVA - hoje não houve registro no diário oficial"
+                sendMessageBot "AVISO ${cidade} - hoje não houve registro no diário oficial"
         else
                 for i in $(echo ${pdfs[@]}); do
                         
@@ -90,11 +92,11 @@ boituva() {
 			exc=$(echo $?)
 			echo "se igual a zero entao achou  (((( ${exc} ))) "
 			if [[ "${exc}" -eq "0" ]]; then
-				sendMessageBot "AVISO Boituva - Corra ver no site, seu nome foi citado no edital de hoje!!!"
+				sendMessageBot "AVISO ${cidade} - Corra ver no site, seu nome foi citado no edital de hoje!!!"
 				sendMessageBot "estou enviando o PDF para você poder confirmar..."
 				sendDocumentBot "${pdf_save}"
 				else
-					sendMessageBot "AVISO Boituva - Seu nome não foi citado no edital de hoje"
+					sendMessageBot "AVISO ${cidade} - Seu nome não foi citado no edital de hoje"
 					sendMessageBot "estou enviando o PDF para você poder confirmar..."
 					sendDocumentBot "${pdf_save}"
 			fi
@@ -105,12 +107,13 @@ boituva() {
 }
 jundiai() {
         diaMesAno="$(date +%d-%m-%Y)"
-        pasta_pdf=${pasta_destino}/jundiai
+	cidade=$2
+        pasta_pdf=${pasta_destino}/${cidade}
         if [[ ! -d "${pasta_pdf}" ]]; then
                 mkdir ${pasta_pdf}
         fi
         url=$1
-	pdf_save=${pasta_pdf}/Jundiai_$(date +%Y%m%d).pdf
+	pdf_save=${pasta_pdf}/${cidade}_$(date +%Y%m%d).pdf
         counter=($(curl -s ${url} | grep -E "${diaMesAno//-/\/}" | grep -v span | grep -E -o "\ [0-9]{4}\ " | tr -d ' '))
         echo "counter --- ${counter[@]}"
         for i in $(echo ${counter[@]}); do
@@ -125,18 +128,18 @@ jundiai() {
                 echo "procurando pelo edital de Jundiai --- url: ${url}"
                 wget -q --spider ${pdfName}
                 if [[ "$?" -ne "0" ]]; then
-                        sendMessageBot "AVISO JUNDIAI - hoje não houve registro no diário oficial"
+                        sendMessageBot "AVISO ${cidade} - hoje não houve registro no diário oficial"
                 else
                         wget -O ${pdf_save} $i
 			chmod 777 ${pdf_save}; /usr/bin/pdfgrep -i "${pattern}" ${pdf_save}
 			exc=$(echo $?)
 			echo "se igual a zero entao achou  (((( ${exc} ))) "
 			if [[ "${exc}" -eq "0" ]]; then
-				sendMessageBot "AVISO Jundiai - Corra ver no site, seu nome foi citado no edital de hoje!!!"
+				sendMessageBot "AVISO ${cidade} - Corra ver no site, seu nome foi citado no edital de hoje!!!"
 				sendMessageBot "estou enviando o PDF para você poder confirmar..."
 				sendDocumentBot "${pdf_save}"
 				else
-					sendMessageBot "AVISO Jundiai - Seu nome não foi citado no edital de hoje"
+					sendMessageBot "AVISO ${cidade} - Seu nome não foi citado no edital de hoje"
 					sendMessageBot "estou enviando o PDF para você poder confirmar..."
 					sendDocumentBot "${pdf_save}"
 			fi
@@ -146,25 +149,26 @@ jundiai() {
 
 }
 jandira() {
-        pasta_pdf=${pasta_destino}/jandira
+	cidade=$2
+        pasta_pdf=${pasta_destino}/${cidade}
         if [[ ! -d "${pasta_pdf}" ]]; then
                 mkdir ${pasta_pdf}
         fi
-	pdf_save=${pasta_pdf}/Jandira_$(date +%Y%m%d).pdf
+	pdf_save=${pasta_pdf}/${cidade}_$(date +%Y%m%d).pdf
         jandira_pdfs=($(curl -s ${jandira_url} | grep -E "$(date +%Y-%m-%d)" | grep -E -o "jopej_$(date +%Y)_ed_[0-9]{4}\.pdf" | sort -u))
         if [[ -z ${jandira_pdfs[@]} ]]; then
-                sendMessageBot "AVISO Jandira - hoje não houve registro no diário oficial"
+                sendMessageBot "AVISO ${cidade} - hoje não houve registro no diário oficial"
         else
                 for i in $(echo ${jandira_pdfs[@]}); do
                         wget -O ${pdf_save} $i
 			chmod 777 ${pdf_save}; /usr/bin/pdfgrep -i "${pattern}" ${pdf_save}
 			exc=$(echo $?)
 			if [[ "${exc}" -eq "0" ]]; then
-				sendMessageBot "AVISO Jandira - Corra ver no site, seu nome foi citado no edital de hoje!!!"
+				sendMessageBot "AVISO ${cidade} - Corra ver no site, seu nome foi citado no edital de hoje!!!"
 				sendMessageBot "estou enviando o PDF para você poder confirmar..."
 				sendDocumentBot "${pdf_save}"
 				else
-					sendMessageBot "AVISO Jandira - Seu nome não foi citado no edital de hoje"
+					sendMessageBot "AVISO ${cidade} - Seu nome não foi citado no edital de hoje"
 					sendMessageBot "estou enviando o PDF para você poder confirmar..."
 					sendDocumentBot "${pdf_save}"
 			fi
@@ -175,8 +179,9 @@ jandira() {
 barueri() {
         diaMesAno="$(date +%d-%m-%Y)"
         url=$1
+	cidade=$2
         diaAno="$(date +%d%y)"
-        pasta_pdf=${pasta_destino}/barueri
+        pasta_pdf=${pasta_destino}/${cidade}
         if [[ ! -d "${pasta_pdf}" ]]; then
                 mkdir ${pasta_pdf}
         fi
@@ -189,11 +194,11 @@ barueri() {
 			chmod 777 ${pdf_save}; /usr/bin/pdfgrep -i "${pattern}" ${pdf_save}
 			exc=$(echo $?)
 			if [[ "${exc}" -eq "0" ]]; then
-				sendMessageBot "AVISO Barueri - Corra ver no site, seu nome foi citado no edital de hoje!!!"
+				sendMessageBot "AVISO ${cidade} - Corra ver no site, seu nome foi citado no edital de hoje!!!"
 				sendMessageBot "estou enviando o PDF para você poder confirmar..."
 				sendDocumentBot "${pdf_save}"
 				else
-					sendMessageBot "AVISO Barueri - Seu nome não foi citado no edital de hoje"
+					sendMessageBot "AVISO ${cidade} - Seu nome não foi citado no edital de hoje"
 					sendMessageBot "estou enviando o PDF para você poder confirmar..."
 					sendDocumentBot "${pdf_save}"
 			fi
@@ -202,7 +207,8 @@ barueri() {
         rm -vfr ${pasta_pdf}
 }
 aracoiaba() {
-        pasta_pdf=${pasta_destino}/aracoiaba
+	cidade=$2
+        pasta_pdf=${pasta_destino}/${cidade}
         if [[ ! -d "${pasta_pdf}" ]]; then
                 mkdir ${pasta_pdf}
         fi
@@ -211,21 +217,21 @@ aracoiaba() {
 	pdf_save=${pasta_pdf}/Aracoiaba_$(date +%Y%m%d).pdf
         pdf="$(curl -s ${url} | grep -E "EDICAO" | grep -E "${diaMesAno}" | cut -d'"' -f4)"
         if [[ -z ${pdf} ]]; then
-                echo "aracoiaba - nao houve edital"
+                sendMessageBot "AVISO ${cidade} - hoje não houve registro no diário oficial"
         else
                 wget -q --spider ${pdf}
                 if [[ "$?" -ne "0" ]]; then
-                        sendMessageBot "AVISO Aracoiaba - hoje não houve registro no diário oficial"
+                        sendMessageBot "AVISO ${cidade} - hoje não houve registro no diário oficial"
                 else
                         wget -O ${pdf_save} $i
 			chmod 777 ${pdf_save}; /usr/bin/pdfgrep -i "${pattern}" ${pdf_save}
 			exc=$(echo $?)
 			if [[ "${exc}" -eq "0" ]]; then
-				sendMessageBot "AVISO Aracoiaba - Corra ver no site, seu nome foi citado no edital de hoje!!!"
+				sendMessageBot "AVISO ${cidade} - Corra ver no site, seu nome foi citado no edital de hoje!!!"
 				sendMessageBot "estou enviando o PDF para você poder confirmar..."
 				sendDocumentBot "${pdf_save}"
 				else
-					sendMessageBot "AVISO Aracoiaba - Seu nome não foi citado no edital de hoje"
+					sendMessageBot "AVISO ${cidade} - Seu nome não foi citado no edital de hoje"
 					sendMessageBot "estou enviando o PDF para você poder confirmar..."
 					sendDocumentBot "${pdf_save}"
 			fi
@@ -234,7 +240,8 @@ aracoiaba() {
         rm -vfr ${pasta_pdf}
 }
 fieb() {
-        pasta_pdf=${pasta_destino}/fieb
+	cidade=$2
+        pasta_pdf=${pasta_destino}/${cidade}
         if [[ ! -d "${pasta_pdf}" ]]; then
                 mkdir ${pasta_pdf}
         fi
@@ -243,7 +250,7 @@ fieb() {
         new_url=($(curl -s ${url} | grep -E -B1 "${diaMesAno}" | grep href | cut -d'"' -f2))
         echo "++++++++++++++++ ${new_url[@]}"
         if [[ -z ${new_url[@]} ]]; then
-		sendMessageBot "AVISO FIEB - hoje não houve registro no diário oficial"
+		sendMessageBot "AVISO ${cidade} - hoje não houve registro no diário oficial"
 
         else
                 for i in $(echo ${new_url[@]}); do
@@ -252,11 +259,11 @@ fieb() {
 			chmod 777 ${pdf_save}; /usr/bin/pdfgrep -i "${pattern}" ${pdf_save}
 			exc=$(echo $?)
 			if [[ "${exc}" -eq "0" ]]; then
-				sendMessageBot "AVISO FIEB - Corra ver no site, seu nome foi citado no edital de hoje!!!"
+				sendMessageBot "AVISO ${cidade} - Corra ver no site, seu nome foi citado no edital de hoje!!!"
 				sendMessageBot "estou enviando o PDF para você poder confirmar..."
 				sendDocumentBot "${pdf_save}"
 				else
-					sendMessageBot "AVISO FIEB - Seu nome não foi citado no edital de hoje"
+					sendMessageBot "AVISO ${cidade} - Seu nome não foi citado no edital de hoje"
 					sendMessageBot "estou enviando o PDF para você poder confirmar..."
 					sendDocumentBot "${pdf_save}"
 			fi
@@ -265,13 +272,13 @@ fieb() {
         rm -vfr ${pasta_pdf}
 }
 
-fieb "${fieb_url}"
-itatiba "${itatiba_url}"
-boituva "${boituva_url}"
-jundiai "${jundiai_url}"
-jandira "${jandira_url}"
-barueri "${barueri_url}"
-aracoiaba "${aracoiaba_url}"
+fieb "${fieb_url}" "FIEB"
+itatiba "${itatiba_url}" "ITATIBA"
+boituva "${boituva_url}" "BOITUVA"
+jundiai "${jundiai_url}" "JUNDIAI"
+jandira "${jandira_url}" "JANDIRA"
+barueri "${barueri_url}" "BARUERI"
+aracoiaba "${aracoiaba_url}" "ARACOIABA"
 
 #adicionar mais cidades a cima
 
