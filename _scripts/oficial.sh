@@ -5,7 +5,7 @@
 #author: rodolfotiago@gmail.com
 #script name: oficial.sh
 #version: 1.2 - com funcoes refatoradas
-
+#
 BASEDIR=$(dirname "$0")
 #echo "$BASEDIR"
 
