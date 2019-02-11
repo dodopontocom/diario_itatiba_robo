@@ -10,4 +10,4 @@ RUN mkdir -p /usr/app/
 ADD ./ /usr/app
 WORKDIR /usr/app
 
-ENTRYPOINT ["bash", "_scripts/entrypoint.sh"]
+ENTRYPOINT ["/bin/bash", "_scripts/entrypoint.sh"]
