@@ -12,6 +12,10 @@ Ferramenta para buscar nomes/padrões na Imprensa Oficial de Prefeituras do Bras
 - [x] Itatiba
 - [x] Jundiai
 - [x] Barueri
+- [x] Barueri FIEB
+- [x] Jandira
+- [x] Boituva
+- [x] Araçoiaba da Serra 
 - [ ] Outras...
 
 ## Requerimentos  
