@@ -4,7 +4,7 @@
 #
 #author: rodolfotiago@gmail.com
 #script name: oficial.sh
-#version: 0.6 - nao depende do odroid ficar ligado - mas tem que por no travis
+#version: 1.2 - com funcoes refatoradas
 
 BASEDIR=$(dirname "$0")
 #echo "$BASEDIR"
@@ -30,7 +30,6 @@ itatiba() {
         if [[ "$?" -ne "0" ]]; then
                 echo "itatiba - não houve edital"
         else
-                #wget -q -O ${pasta_destino}/$(echo "$(cat /dev/urandom | tr -dc 'A-Za-z0-9' | head -c 13).pdf") $1
                 wget -q $1 -P ${pasta_pdf}
                 gsutil cp ${pasta_pdf}/*.pdf gs://passei-pdf-storage/itatiba/
 
@@ -65,7 +64,6 @@ jundiai() {
         fi
         url=$1
         counter=($(curl -s ${url} | grep -E "${diaMesAno//-/\/}" | grep -v span | grep -E -o "\ [0-9]{4}\ " | tr -d ' '))
-        #counter=($(curl -s ${url} | grep -E "${diaMesAno//-/\/}" | grep -v span | tail -2 | grep -E -o "Edição\ [0-9]*" | sed 's/Edição\ //'))
         echo "counter --- ${counter[@]}"
         for i in $(echo ${counter[@]}); do
                 echo "counter i ----- $i"
@@ -93,9 +91,7 @@ jandira() {
         if [[ ! -d "${pasta_pdf}" ]]; then
                 mkdir ${pasta_pdf}
         fi
-        fake="2019-02-09"
         jandira_pdfs=($(curl -s ${jandira_url} | grep -E "$(date +%Y-%m-%d)" | grep -E -o "jopej_$(date +%Y)_ed_[0-9]{4}\.pdf" | sort -u))
-        #jandira_pdfs=($(curl -s ${jandira_url} | grep -E "${fake}" | grep -E -o "jopej_2019_ed_[0-9]{4}\.pdf" | sort -u))
         if [[ -z ${jandira_pdfs[@]} ]]; then
                 echo "jandira - nao houve edital"
         else
