@@ -187,7 +187,7 @@ barueri() {
         if [[ ! -d "${pasta_pdf}" ]]; then
                 mkdir ${pasta_pdf}
         fi
-	pdf_save=${pasta_pdf}/Barueri_$(date +%Y%m%d).pdf
+	pdf_save=${pasta_pdf}/${cidade}_$(date +%Y%m%d).pdf
         pdf=($(curl -s ${url} | grep servicos | grep JOB | grep "ACESSAR JORNAL" | cut -d'"' -f4 | head -4))
         for i in $(echo ${pdf[@]}); do
                 echo "--------------- $i"
@@ -216,7 +216,7 @@ aracoiaba() {
         fi
         diaMesAno="$(date +%d%m%Y)"
         url=$1
-	pdf_save=${pasta_pdf}/Aracoiaba_$(date +%Y%m%d).pdf
+	pdf_save=${pasta_pdf}/${cidade}_$(date +%Y%m%d).pdf
         pdf="$(curl -s ${url} | grep -E "EDICAO" | grep -E "${diaMesAno}" | cut -d'"' -f4)"
         if [[ -z ${pdf} ]]; then
                 sendMessageBot "AVISO ${cidade} - hoje não houve registro no diário oficial" "$3"
@@ -248,6 +248,7 @@ fieb() {
                 mkdir ${pasta_pdf}
         fi
         url=$1
+        pdf_save=${pasta_pdf}/${cidade}_$(date +%Y%m%d).pdf
         diaMesAno="$(date +%d/%m/%Y)"
         new_url=($(curl -s ${url} | grep -E -B1 "${diaMesAno}" | grep href | cut -d'"' -f2))
         echo "++++++++++++++++ ${new_url[@]}"
