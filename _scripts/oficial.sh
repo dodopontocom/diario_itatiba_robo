@@ -31,14 +31,16 @@ fi
 
 sendMessageBot() {
 	messageText=$1
-	for i in 11504381 449542698; do
+        ids=(11504381 449542698)
+	for i in $(echo ${ids[@]}); do
 		curl -s -X POST https://api.telegram.org/bot${token}/sendMessage -d chat_id=${i} -d text="${messageText}"
 	done
 }
 #
 sendDocumentBot(){
 	documentPath=$1
-	for d in 11504381 449542698; do
+	ids=(11504381 449542698)
+	for d in $(echo ${ids[@]}); do
 		curl -F chat_id=${d} -F document=@${documentPath} https://api.telegram.org/bot${token}/sendDocument
 	done
 }
@@ -113,7 +115,7 @@ jundiai() {
                 mkdir ${pasta_pdf}
         fi
         url=$1
-	pdf_save=${pasta_pdf}/${cidade}_$(date +%Y%m%d).pdf
+	pdf_save="${pasta_pdf}/${cidade}_$(date +%Y%m%d).pdf"
         counter=($(curl -s ${url} | grep -E "${diaMesAno//-/\/}" | grep -v span | grep -E -o "\ [0-9]{4}\ " | tr -d ' '))
         echo "counter --- ${counter[@]}"
         for i in $(echo ${counter[@]}); do
@@ -126,11 +128,11 @@ jundiai() {
                         pdfName=$(curl -s ${jundiaiExtra} | grep "$i" | grep -E "\.pdf" | cut -d'"' -f2)
                 fi
                 echo "procurando pelo edital de Jundiai --- url: ${url}"
-                wget -q --spider ${pdfName}
+                wget -q --spider ${pdf_save}
                 if [[ "$?" -ne "0" ]]; then
                         sendMessageBot "AVISO ${cidade} - hoje não houve registro no diário oficial"
                 else
-                        wget -O ${pdf_save} $i
+                        wget -O ${pdf_save} ${pdfName}
 			chmod 777 ${pdf_save}; /usr/bin/pdfgrep -i "${pattern}" ${pdf_save}
 			exc=$(echo $?)
 			echo "se igual a zero entao achou  (((( ${exc} ))) "
