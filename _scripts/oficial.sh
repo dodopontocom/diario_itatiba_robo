@@ -31,7 +31,7 @@ fi
 
 sendMessageBot() {
 	messageText=$1
-        ids=(11504381 449542698)
+        ids=($3)
 	for i in $(echo ${ids[@]}); do
 		curl -s -X POST https://api.telegram.org/bot${token}/sendMessage -d chat_id=${i} -d text="${messageText}"
 	done
@@ -39,7 +39,7 @@ sendMessageBot() {
 #
 sendDocumentBot(){
 	documentPath=$1
-	ids=(11504381 449542698)
+	ids=($3)
 	for d in $(echo ${ids[@]}); do
 		curl -F chat_id=${d} -F document=@${documentPath} https://api.telegram.org/bot${token}/sendDocument
 	done
@@ -128,7 +128,7 @@ jundiai() {
                         pdfName=$(curl -s ${jundiaiExtra} | grep "$i" | grep -E "\.pdf" | cut -d'"' -f2)
                 fi
                 echo "procurando pelo edital de Jundiai --- url: ${url}"
-                wget -q --spider ${pdf_save}
+                wget -q --spider ${pdfName}
                 if [[ "$?" -ne "0" ]]; then
                         sendMessageBot "AVISO ${cidade} - hoje não houve registro no diário oficial"
                 else
@@ -274,15 +274,17 @@ fieb() {
         rm -vfr ${pasta_pdf}
 }
 
-fieb "${fieb_url}" "FIEB"
-itatiba "${itatiba_url}" "ITATIBA"
-boituva "${boituva_url}" "BOITUVA"
-jundiai "${jundiai_url}" "JUNDIAI"
-jandira "${jandira_url}" "JANDIRA"
-barueri "${barueri_url}" "BARUERI"
-aracoiaba "${aracoiaba_url}" "ARACOIABA"
+fieb "${fieb_url}" "FIEB" "11504381"
+itatiba "${itatiba_url}" "ITATIBA" "11504381"
+boituva "${boituva_url}" "BOITUVA" "11504381"
+jundiai "${jundiai_url}" "JUNDIAI" "11504381"
+jandira "${jandira_url}" "JANDIRA" "11504381"
+barueri "${barueri_url}" "BARUERI" "11504381"
+aracoiaba "${aracoiaba_url}" "ARACOIABA" "11504381"
 
 #adicionar mais cidades a cima
+# Rodolfo 11504381
+# Thais 449542698
 
 echo "script end"
 sleep 1
