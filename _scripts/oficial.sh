@@ -285,7 +285,7 @@ fieb() {
         rm -vfr ${pasta_pdf}
 }
 
-fieb "${fieb_url}" "FIEB" "11504381 449542698"
+fieb "${fieb_url}" "FIEB" "11504381"
 sleep 3
 itatiba "${itatiba_url}" "ITATIBA" "11504381"
 sleep 3
