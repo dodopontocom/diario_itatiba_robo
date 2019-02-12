@@ -1,14 +1,8 @@
 language: generic
 
-sudo: required
-
-services:
- - docker
- 
 script:
- - docker run --rm -e TB_TOKEN=$TB_TOKEN rodolfoneto/diario_itatiba_robo:develop
+ - docker run --rm -e TB_TOKEN=$TB_TOKEN rodolfoneto/diario_itatiba_robo:new
 
 branches:
   only:
-    - develop
-    - master
+    - new
