@@ -193,6 +193,7 @@ barueri() {
         fi
 	pdf_save=${pasta_pdf}/${cidade}_$(date +%Y%m%d).pdf
         pdf=($(curl -s ${url} | grep servicos | grep JOB | grep "ACESSAR JORNAL" | cut -d'"' -f4 | head -4))
+        flag=0
         for i in $(echo ${pdf[@]}); do
                 echo "--------------- $i"
                 if [[ "$(echo $i | grep -E -o '[0-9]{2}.*[a-zA-Z][-/_]' | tr -d '_/a-zA-Z' | tr -d '-' | sed 's/^....//' | sed 's/2019/19/' | sed 's/^0*//')" == "$(echo ${diaAno} | sed 's/^0*//')" ]]; then
@@ -209,9 +210,12 @@ barueri() {
 					sendDocumentBot "${pdf_save}" "$3"
 			fi
                         else
-                                sendMessageBot "AVISO ${cidade} - hoje não houve registro no diário oficial" "$3"
+                                flag=$((flag+1))
                 fi
         done
+        if [[ "${flag}" -eq "4" ]]; then
+                sendMessageBot "AVISO ${cidade} - hoje não houve registro no diário oficial" "$3"
+        fi
         rm -vfr ${pasta_pdf}
 }
 aracoiaba() {
