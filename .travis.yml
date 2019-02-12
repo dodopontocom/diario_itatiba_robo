@@ -1,8 +1,8 @@
 language: generic
 
 script:
- - docker run --rm -e TB_TOKEN=$TB_TOKEN rodolfoneto/diario_itatiba_robo:new
+ - docker run --rm -e TB_TOKEN=$TB_TOKEN rodolfoneto/diario_itatiba_robo:develop
 
 branches:
   only:
-    - new
+    - develop
