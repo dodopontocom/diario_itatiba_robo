@@ -31,7 +31,7 @@ fi
 
 sendMessageBot() {
 	messageText=$1
-        ids=($2)
+        ids=("$2")
 	for i in $(echo ${ids[@]}); do
 		curl -s -X POST https://api.telegram.org/bot${token}/sendMessage -d chat_id=${i} -d text="${messageText}"
 	done
@@ -39,7 +39,7 @@ sendMessageBot() {
 #
 sendDocumentBot(){
 	documentPath=$1
-	ids=($2)
+	ids=("$2")
 	for d in $(echo ${ids[@]}); do
 		curl -F chat_id=${d} -F document=@${documentPath} https://api.telegram.org/bot${token}/sendDocument
 	done
