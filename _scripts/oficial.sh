@@ -285,19 +285,19 @@ fieb() {
         rm -vfr ${pasta_pdf}
 }
 
-fieb "${fieb_url}" "FIEB" "11504381"
+fieb "${fieb_url}" "FIEB" "11504381 449542698"
 sleep 3
 itatiba "${itatiba_url}" "ITATIBA" "11504381"
 sleep 3
 boituva "${boituva_url}" "BOITUVA" "11504381"
 sleep 3
-jundiai "${jundiai_url}" "JUNDIAI" "11504381"
+jundiai "${jundiai_url}" "JUNDIAI" "11504381 449542698"
 sleep 3
 jandira "${jandira_url}" "JANDIRA" "11504381"
 sleep 3
-barueri "${barueri_url}" "BARUERI" "11504381"
+barueri "${barueri_url}" "BARUERI" "11504381 449542698"
 sleep 3
-aracoiaba "${aracoiaba_url}" "ARACOIABA" "11504381"
+aracoiaba "${aracoiaba_url}" "ARACOIABA" "11504381 449542698"
 sleep 3
 
 #adicionar mais cidades a cima
