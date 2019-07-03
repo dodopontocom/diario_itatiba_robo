@@ -252,6 +252,7 @@ aracoiaba() {
         rm -vfr ${pasta_pdf}
 }
 fieb() {
+	local cidade pasta_pdf url pdf_save diaMesAno new_url
 	cidade=$2
         pasta_pdf=${pasta_destino}/${cidade}
         if [[ ! -d "${pasta_pdf}" ]]; then
@@ -260,6 +261,7 @@ fieb() {
         url=$1
         pdf_save=${pasta_pdf}/${cidade}_$(date +%Y%m%d).pdf
         diaMesAno="$(date +%d/%m/%Y)"
+	diaMesAno="08/06/2019"
         new_url=($(curl -s ${url} | grep -E -B1 "${diaMesAno}" | grep href | cut -d'"' -f2))
         echo "++++++++++++++++ ${new_url[@]}"
         if [[ -z ${new_url[@]} ]]; then
