@@ -261,7 +261,7 @@ fieb() {
         url=$1
         pdf_save=${pasta_pdf}/${cidade}_$(date +%Y%m%d).pdf
         diaMesAno="$(date +%d/%m/%Y)"
-	diaMesAno="08/06/2019"
+	
         new_url=($(curl -s ${url} | grep -E -B1 "${diaMesAno}" | grep href | cut -d'"' -f2))
         echo "++++++++++++++++ ${new_url[@]}"
         if [[ -z ${new_url[@]} ]]; then
@@ -270,9 +270,7 @@ fieb() {
         else
                 for i in $(echo ${new_url[@]}); do
                         pdf=$(curl -s ${i} | grep -E "$(date +%Y)\/$(date +%m)" | grep -E "\.pdf" | head -1 | grep iframe | cut -d'"' -f2)
-			if [[ -z $pdf ]]; then
-				pdf=$(curl -s ${i} | grep -E "$(date +%Y)\/06" | grep -E "\.pdf" | head -1 | grep iframe | cut -d'"' -f2)
-			fi
+			
                         wget -O ${pdf_save} ${pdf}
 			chmod 777 ${pdf_save}; /usr/bin/pdfgrep -i "${pattern}" ${pdf_save}
 			exc=$(echo $?)
