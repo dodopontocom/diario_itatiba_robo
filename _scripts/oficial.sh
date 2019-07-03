@@ -267,8 +267,10 @@ fieb() {
 
         else
                 for i in $(echo ${new_url[@]}); do
-                        #pdf=$(curl -s ${i} | grep -E "$(date +%Y)\/$(date +%m)" | grep -E "\.pdf" | head -1 | grep iframe | cut -d'"' -f2)
-			pdf=$(curl -s ${i} | grep -E "$(date +%Y)\/06" | grep -E "\.pdf" | head -1 | grep iframe | cut -d'"' -f2)
+                        pdf=$(curl -s ${i} | grep -E "$(date +%Y)\/$(date +%m)" | grep -E "\.pdf" | head -1 | grep iframe | cut -d'"' -f2)
+			if [[ -z $pdf ]]; then
+				pdf=$(curl -s ${i} | grep -E "$(date +%Y)\/06" | grep -E "\.pdf" | head -1 | grep iframe | cut -d'"' -f2)
+			fi
                         wget -O ${pdf_save} ${pdf}
 			chmod 777 ${pdf_save}; /usr/bin/pdfgrep -i "${pattern}" ${pdf_save}
 			exc=$(echo $?)
