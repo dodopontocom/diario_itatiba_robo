@@ -287,21 +287,46 @@ fieb() {
         fi
         rm -vfr ${pasta_pdf}
 }
+campinas() {
+	local url cidade id pdf_save
+	url=$1
+	cidade=$2
+	id=$3
+	pdf_save=${pasta_pdf}/${cidade}_$(date +%Y%m%d).pdf
+	
+	pdf_day=$(curl -sS ${url} | grep -E -o "uploads/pdf/[0-9].*.pdf")
+	if [[ ${pdf_day} ]]; then
+		url_final="${url}uploads/pdf/${pdf_day}"
+		wget -O ${pdf_save} ${url_final}
+		chmod 777 ${pdf_save}; /usr/bin/pdfgrep -i "${pattern}" ${pdf_save}
+		exc=$(echo $?)
+		if [[ "${exc}" -eq "0" ]]; then
+			sendMessageBot "AVISO ${cidade} - Corra ver no site, seu nome foi citado no edital de hoje!!!" "$3"
+			sendMessageBot "estou enviando o PDF para você poder confirmar..." "$3"
+			sendDocumentBot "${pdf_save}" "$3"
+			else
+				sendMessageBot "AVISO ${cidade} - Seu nome não foi citado no edital de hoje" "$3"
+				sendMessageBot "estou enviando o PDF para você poder confirmar..." "$3"
+				sendDocumentBot "${pdf_save}" "$3"
+		fi
+	fi
 
-fieb "${fieb_url}" "FIEB" "11504381 449542698"
-sleep 3
+}
+campinas "${campinas_url}" "CAMPINAS" "11504381"
+#fieb "${fieb_url}" "FIEB" "11504381 449542698"
+#sleep 3
 #itatiba "${itatiba_url}" "ITATIBA" "11504381"
 #sleep 3
 #boituva "${boituva_url}" "BOITUVA" "11504381"
 #sleep 3
-jundiai "${jundiai_url}" "JUNDIAI" "11504381 449542698"
-sleep 3
+#jundiai "${jundiai_url}" "JUNDIAI" "11504381 449542698"
+#sleep 3
 #jandira "${jandira_url}" "JANDIRA" "11504381"
 #sleep 3
-barueri "${barueri_url}" "BARUERI" "11504381 449542698"
-sleep 3
-aracoiaba "${aracoiaba_url}" "ARACOIABA" "11504381 449542698"
-sleep 3
+#barueri "${barueri_url}" "BARUERI" "11504381 449542698"
+#sleep 3
+#aracoiaba "${aracoiaba_url}" "ARACOIABA" "11504381 449542698"
+#sleep 3
 
 #adicionar mais cidades a cima
 # Rodolfo 11504381
