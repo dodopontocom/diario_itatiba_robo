@@ -292,6 +292,10 @@ campinas() {
 	url=$1
 	cidade=$2
 	id=$3
+	pasta_pdf=${pasta_destino}/${cidade}
+        if [[ ! -d "${pasta_pdf}" ]]; then
+                mkdir ${pasta_pdf}
+        fi
 	pdf_save=${pasta_pdf}/${cidade}_$(date +%Y%m%d).pdf
 	
 	pdf_day=$(curl -sS ${url} | grep -E -o "uploads/pdf/[0-9].*.pdf")
