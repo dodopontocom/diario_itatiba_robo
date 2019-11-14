@@ -300,7 +300,7 @@ campinas() {
 	
 	pdf_day=$(curl -sS ${url} | grep -E -o "uploads/pdf/[0-9].*.pdf")
 	if [[ ${pdf_day} ]]; then
-		url_final="${url}uploads/pdf/${pdf_day}"
+		url_final="${url}${pdf_day}"
 		wget -O ${pdf_save} ${url_final}
 		chmod 777 ${pdf_save}; /usr/bin/pdfgrep -i "${pattern}" ${pdf_save}
 		exc=$(echo $?)
