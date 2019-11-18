@@ -6,6 +6,10 @@
 
 BASEDIR="$(cd "$(dirname "$0")" ; pwd -P)"
 
+#test
+wget https://raw.githubusercontent.com/dodopontocom/odroid-contas/develop/functions/helper.sh | bash -s
+helper.random 999
+
 #load properties file
 . ${BASEDIR}/urls.config
 . ${BASEDIR}/functions.sh
