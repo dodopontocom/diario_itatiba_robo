@@ -16,6 +16,7 @@ Ferramenta para buscar nomes/padrões na Imprensa Oficial de Prefeituras do Bras
 - [x] Jandira
 - [x] Boituva
 - [x] Araçoiaba da Serra 
+- [x] Campinas
 - [ ] Outras...
 
 ## Requerimentos  
