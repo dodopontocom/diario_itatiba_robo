@@ -17,6 +17,7 @@ Ferramenta para buscar nomes/padrões na Imprensa Oficial de Prefeituras do Bras
 - [x] Boituva
 - [x] Araçoiaba da Serra 
 - [x] Campinas
+- [ ] Sorocaba
 - [ ] Outras...
 
 ## Requerimentos  
