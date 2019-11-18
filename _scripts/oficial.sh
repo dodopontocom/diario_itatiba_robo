@@ -288,16 +288,42 @@ fieb() {
         rm -vfr ${pasta_pdf}
 }
 campinas() {
-	local url cidade id pdf_save
+	local url cidade id pdf_save extra_date extra_pdf
+	
 	url=$1
 	cidade=$2
 	id=$3
+	extra_date=$(date +%Y-%m-%d)
+	extra_pdf="${url}arquivos/dom-extra/dom-extra-${extra_date}.pdf"
+	
 	pasta_pdf=${pasta_destino}/${cidade}
         if [[ ! -d "${pasta_pdf}" ]]; then
                 mkdir ${pasta_pdf}
         fi
-	pdf_save=${pasta_pdf}/${cidade}_$(date +%Y%m%d).pdf
 	
+	pdf_save=${pasta_pdf}/${cidade}_$(date +%Y%m%d).pdf
+	extra_pdf_save=${pasta_pdf}/EXTRA_${cidade}_$(date +%Y%m%d).pdf
+	
+	#Primeira verificação para saber se houve edital extra do dia
+	wget -O ${extra_pdf_save} ${url_final}
+	exc=$(echo $?)
+	if [[ "${exc}" -eq "0" ]]; then
+		chmod 777 ${extra_pdf_save}; /usr/bin/pdfgrep -i "${pattern}" ${extra_pdf_save}
+		exc=$(echo $?)
+		if [[ "${exc}" -eq "0" ]]; then
+			sendMessageBot "AVISO ${cidade} - Corra ver no site, seu nome foi citado no edital de hoje!!!" "$3"
+			sendMessageBot "estou enviando o PDF para você poder confirmar..." "$3"
+			sendDocumentBot "${extra_pdf_save}" "$3"
+			else
+				sendMessageBot "AVISO ${cidade} - Seu nome não foi citado no edital extra de hoje" "$3"
+				sendMessageBot "estou enviando o PDF para você poder confirmar..." "$3"
+				sendDocumentBot "${extra_pdf_save}" "$3"
+		fi
+	else
+		sendMessageBot "Não houve edital EXTRA de ${cidade} hoje" "$3"
+	fi
+	
+	#Segunda verificação se houve edital normal no dia
 	pdf_day=$(curl -sS ${url} | grep -E -o "uploads/pdf/[0-9].*.pdf")
 	if [[ ${pdf_day} ]]; then
 		url_final="${url}${pdf_day}"
