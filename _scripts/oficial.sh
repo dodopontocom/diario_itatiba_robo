@@ -42,7 +42,7 @@ sendDocumentBot(){
 	done
 }
 
-campinas "${campinas_url}" "CAMPINAS" "11504381"
+pdfgrep.campinas "${campinas_url}" "CAMPINAS" "11504381"
 #fieb "${fieb_url}" "FIEB" "11504381 449542698"
 #sleep 3
 #itatiba "${itatiba_url}" "ITATIBA" "11504381"
