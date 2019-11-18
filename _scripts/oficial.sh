@@ -4,7 +4,7 @@
 #version: 1.11 - com funcoes refatoradas
 #
 
-BASEDIR="$( cd "$(dirname "$0")" ; pwd -P )"
+BASEDIR="$(cd "$(dirname "$0")" ; pwd -P)"
 
 #load properties file
 . ${BASEDIR}/urls.config
@@ -19,11 +19,13 @@ token=${TB_TOKEN}
 
 pTest="atos oficiais"
 padrao="carvalho de oliveira neto"
+
 pattern=$1
 if [[ -z ${pattern} ]]; then
 	pattern=${padrao}
 fi
 
+#função para verificar no diário oficial de campinas
 pdfgrep.campinas "${campinas_url}" "CAMPINAS" "11504381"
 
 # Rodolfo 11504381
