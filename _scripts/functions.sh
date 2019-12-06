@@ -285,6 +285,7 @@ pdfgrep.campinas() {
 			sendMessageBot "AVISO ${cidade} - Corra ver no site, seu nome foi citado no edital de hoje!!!" "$3"
 			sendMessageBot "estou enviando o PDF para você poder confirmar..." "$3"
 			sendDocumentBot "${extra_pdf_save}" "$3"
+			sendMessageBot "RUN Forest, RUN!!!" "$3"
 			else
 				sendMessageBot "AVISO ${cidade} - Seu nome não foi citado no edital extra de hoje" "$3"
 				sendMessageBot "estou enviando o PDF para você poder confirmar..." "$3"
