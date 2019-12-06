@@ -30,7 +30,7 @@ if [[ -z ${pattern} ]]; then
 fi
 
 #função para verificar no diário oficial de campinas
-pdfgrep.campinas "${campinas_url}" "CAMPINAS" "11504381"
+pdfgrep.campinas "${campinas_url}" "CAMPINAS" "11504381 449542698"
 
 # Rodolfo 11504381
 # Thais 449542698
