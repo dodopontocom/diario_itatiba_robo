@@ -317,10 +317,11 @@ pdfgrep.campinas() {
 }
 
 pdfgrep.cerquilho() {
-	local cidade url_base check_not_found
+	local cidade url_base check_not_found send_ids
 	
 	url_base=$1
 	cidade=$2
+	send_ids=(${3})
 	check_not_found=false
 	
 	for i in $(seq 74 99); do
@@ -332,8 +333,8 @@ pdfgrep.cerquilho() {
 		/usr/bin/pdfgrep -i "${pattern}" ${pdf_file}
 		if [[ "$?" -eq "0" ]]; then	
 			sendMessageBot "AVISO ${cidade} - Corra ver no site, seu nome foi citado no edital de hoje!!!" "$3"
-			sendMessageBot "estou enviando o PDF para você poder confirmar..." "$3"
-			sendDocumentBot "${pdf_file}" "$3"
+			sendMessageBot "estou enviando o PDF para você poder confirmar..." "${send_ids[@]}"
+			sendDocumentBot "${pdf_file}" "${send_ids[@]}"
 			check_not_found=false
 			break
 		else
@@ -345,6 +346,6 @@ pdfgrep.cerquilho() {
 	
 	done
 	if [[ "${check_not_found}" == "true" ]]; then
-		sendMessageBot "AVISO ${cidade} - Hoje não houve edital de Nomeação" "$3"
+		sendMessageBot "AVISO ${cidade} - Hoje não houve edital de Nomeação" "${send_ids[@]}"
 	fi
 }
