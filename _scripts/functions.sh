@@ -345,8 +345,6 @@ pdfgrep.cerquilho() {
 	
 	done
 	if [[ "${check_not_found}" == "true" ]]; then
-		sendMessageBot "AVISO ${cidade} - Seu nome não foi citado no edital extra de hoje" "$3"
-		sendMessageBot "estou enviando o PDF para você poder confirmar..." "$3"
-		sendDocumentBot "${pdf_file}" "$3"
+		sendMessageBot "AVISO ${cidade} - Hoje não houve edital de Nomeação" "$3"
 	fi
 }
