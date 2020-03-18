@@ -1,14 +1,12 @@
 #!/bin/bash
-#author: rodolfotiago@gmail.com
-#script name: oficial.sh
-#version: 1.11 - com funcoes refatoradas
+
+# author: rodolfotiago@gmail.com
+# script name: oficial.sh
+# version: 1.56
+# release notes: clean up
 #
 
 BASEDIR="$(cd "$(dirname "$0")" ; pwd -P)"
-
-#test
-wget https://raw.githubusercontent.com/dodopontocom/odroid-contas/develop/functions/helper.sh | bash -s
-helper.random 999
 
 #load properties file
 . ${BASEDIR}/urls.config
@@ -29,10 +27,4 @@ if [[ -z ${pattern} ]]; then
 	pattern=${padrao}
 fi
 
-#função para verificar no diário oficial de campinas
-#pdfgrep.campinas "${campinas_url}" "CAMPINAS" "11504381"
 pdfgrep.cerquilho "${cerquilho_url}" "CERQUILHO" "11504381 449542698"
-
-# Rodolfo 11504381
-# Thais 449542698
-# Josilene 772609694
