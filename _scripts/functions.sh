@@ -16,6 +16,27 @@ sendDocumentBot(){
 	done
 }
 
+pdfgrep.cerquilho() {
+	cidade=$2
+	for i in $(seq 60 90); do
+		url="${cerquilho_url}${i}/"
+		pdf_file="/tmp/$(cat /dev/urandom | tr -cd 'a-f0-9' | head -c 16).pdf"
+		
+		wget --quiet -O ${pdf_file} ${url}
+		
+		pdfgrep -i "Ivanilson" ${pdf_file}
+		if [[ "$?" -eq "0" ]]; then	
+			sendMessageBot "AVISO ${cidade} - Corra ver no site, seu nome foi citado no edital de hoje!!!" "$3"
+			sendMessageBot "estou enviando o PDF para você poder confirmar..." "$3"
+			sendDocumentBot "${pdf_file}" "$3"
+		fi
+		
+		pdf_file=''
+		url=''
+	
+	done
+}
+
 pdfgrep.itatiba() {
 	cidade=$2
         pasta_pdf=${pasta_destino}/${cidade}
