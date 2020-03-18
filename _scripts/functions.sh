@@ -323,7 +323,7 @@ pdfgrep.cerquilho() {
 	cidade=$2
 	check_not_found=false
 	
-	for i in $(seq 60 90); do
+	for i in $(seq 74 99); do
 		url="${url_base}${i}/"
 		pdf_file="/tmp/$(cat /dev/urandom | tr -cd 'a-f0-9' | head -c 16).pdf"
 		
