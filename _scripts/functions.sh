@@ -326,8 +326,8 @@ pdfgrep.cerquilho() {
 		pdf_file="/tmp/$(cat /dev/urandom | tr -cd 'a-f0-9' | head -c 16).pdf"
 		
 		wget --quiet -O ${pdf_file} ${url}
-		
-		pdfgrep -i "Ivanilson" ${pdf_file}
+		chmod 777 ${pdf_file}
+		/usr/bin/pdfgrep -i "${pattern}" ${pdf_file}
 		if [[ "$?" -eq "0" ]]; then	
 			sendMessageBot "AVISO ${cidade} - Corra ver no site, seu nome foi citado no edital de hoje!!!" "$3"
 			sendMessageBot "estou enviando o PDF para você poder confirmar..." "$3"
