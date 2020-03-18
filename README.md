@@ -4,7 +4,7 @@
 [![Docker Pulls](https://img.shields.io/docker/pulls/rodolfoneto/diario_itatiba_robo.svg)](https://hub.docker.com/r/rodolfoneto/diario_itatiba_robo/)
 [![Coverage Status](https://coveralls.io/repos/github/dodopontocom/diario_itatiba_robo/badge.svg?branch=develop)](https://coveralls.io/github/dodopontocom/diario_itatiba_robo?branch=develop)
 
-# Robô Diários Oficiais
+# Robô Diários Oficiais*
 Ferramenta para buscar nomes/padrões na Imprensa Oficial de Prefeituras do Brasil.  
 
 ### Atualmente disponível para as cidades:
