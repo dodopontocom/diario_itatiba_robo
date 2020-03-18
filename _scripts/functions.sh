@@ -317,10 +317,12 @@ pdfgrep.campinas() {
 }
 
 pdfgrep.cerquilho() {
-	local cidade url_base
+	local cidade url_base check_not_found
 	
 	url_base=$1
 	cidade=$2
+	check_not_found=false
+	
 	for i in $(seq 60 90); do
 		url="${url_base}${i}/"
 		pdf_file="/tmp/$(cat /dev/urandom | tr -cd 'a-f0-9' | head -c 16).pdf"
@@ -332,14 +334,19 @@ pdfgrep.cerquilho() {
 			sendMessageBot "AVISO ${cidade} - Corra ver no site, seu nome foi citado no edital de hoje!!!" "$3"
 			sendMessageBot "estou enviando o PDF para você poder confirmar..." "$3"
 			sendDocumentBot "${pdf_file}" "$3"
+			check_not_found=false
+			break
 		else
-			sendMessageBot "AVISO ${cidade} - Seu nome não foi citado no edital extra de hoje" "$3"
-			sendMessageBot "estou enviando o PDF para você poder confirmar..." "$3"
-			sendDocumentBot "${pdf_file}" "$3"
+			check_not_found=true
 		fi
 		
 		pdf_file=''
 		url=''
 	
 	done
+	if [[ "${check_not_found}" == "true" ]]; then
+		sendMessageBot "AVISO ${cidade} - Seu nome não foi citado no edital extra de hoje" "$3"
+		sendMessageBot "estou enviando o PDF para você poder confirmar..." "$3"
+		sendDocumentBot "${pdf_file}" "$3"
+	fi
 }
